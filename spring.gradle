@@ -1,0 +1,16 @@
+apply plugin: "io.spring.dependency-management"
+apply plugin: "org.springframework.boot"
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        mavenBom "org.springframework.boot:spring-boot-dependencies:${springBootVersion}"
+    }
+}
+
+dependencies {
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-consul'
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-consul-discovery'
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-consul-config'
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-zipkin'
+    implementation group: 'de.codecentric', name: 'spring-boot-admin-starter-client', version: adminVersion
+}

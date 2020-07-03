@@ -1,7 +1,17 @@
-group 'com.shit.code.cloud'
-version '0.1.0'
+buildscript {
+    repositories {
+        maven {
+            url aliYunMavenRepo
+        }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
 
 allprojects {
+    group 'com.shit.code.cloud'
+    version '0.1.0'
     repositories {
         maven {
             url aliYunMavenRepo

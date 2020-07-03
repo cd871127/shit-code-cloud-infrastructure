@@ -1,6 +1,4 @@
-group 'com.shit.code.cloud'
+apply from: "${project.rootDir}/spring.gradle"
 version '0.1.0'
-
-
 dependencies {
 }
