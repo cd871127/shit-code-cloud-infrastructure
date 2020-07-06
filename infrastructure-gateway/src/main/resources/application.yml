@@ -1,8 +1,21 @@
 spring:
-  boot:
-    admin:
-      client:
-        url:
-          - localhost:8080
+  profiles:
+#    include:
+    active: admin
+  cloud:
+    gateway:
+      routes:
+        - id: test
+          uri: http://www.baidu.com/s/
+          predicates:
+            - Path=/*
+          filters:
+            - AddRequestParameter=wd, github
 server:
   port: 8889
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,status,gateway

@@ -1,0 +1,6 @@
+spring:
+  boot:
+    admin:
+      client:
+        url:
+          - localhost:20001

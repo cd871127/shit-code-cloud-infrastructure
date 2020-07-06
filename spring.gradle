@@ -16,3 +16,9 @@ dependencies {
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-logging'
 }
+
+bootJar {
+    rootSpec.exclude("**/*.yml")
+    archiveBaseName.set(project.name)
+    archiveVersion.set("")
+}
