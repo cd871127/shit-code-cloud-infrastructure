@@ -4,6 +4,6 @@ dependencies {
     implementation group: 'de.codecentric', name: 'spring-boot-admin-starter-server', version: adminVersion
 }
 
-bootRun{
-    setMain("com.shit.code.infrastructure.admin.Main")
-}
+//bootRun{
+//    setMain("com.shit.code.infrastructure.admin.Main")
+//}
