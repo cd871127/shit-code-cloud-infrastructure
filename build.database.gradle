@@ -1,0 +1,8 @@
+dependencies {
+    implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: mybatisVersion
+    implementation group: 'mysql', name: 'mysql-connector-java', version: mysqlVersion
+    implementation group: 'com.github.pagehelper', name: 'pagehelper-spring-boot-starter', version: pageHelperVersion
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc'
+    //flyway
+    implementation group: 'org.flywaydb', name: 'flyway-core', version: flywayVersion
+}

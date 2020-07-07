@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: gateway
   profiles:
 #    include:
     active: admin
@@ -11,6 +13,7 @@ spring:
             - Path=/*
           filters:
             - AddRequestParameter=wd, github
+
 server:
   port: 8889
 

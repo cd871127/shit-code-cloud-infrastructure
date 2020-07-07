@@ -18,7 +18,7 @@ dependencies {
 }
 
 bootJar {
-    rootSpec.exclude("**/*.yml")
+//    rootSpec.exclude("**/*.yml")
     archiveBaseName.set(project.name)
     archiveVersion.set("")
 }
