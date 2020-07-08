@@ -1,23 +1,20 @@
-#个性化配置
 spring:
   application:
     name: infrastructure-gateway
   profiles:
     active: cluster
-    include: admin
+    include: consul,admin
+  main:
+    allow-bean-definition-overriding: true
   cloud:
-    gateway:
-      discovery:
-        locator:
+    consul:
+      port: 8500
+      config:
+        format: FILES
+        prefix: config/${spring.profiles.active}
+        watch:
           enabled: true
-          lower-case-service-id: true
-      routes:
-        - id: test
-          uri: http://www.baidu.com/s/
-          predicates:
-            - Path=/*
-          filters:
-            - AddRequestParameter=wd, github
+          delay: 1
 management:
   endpoints:
     web:

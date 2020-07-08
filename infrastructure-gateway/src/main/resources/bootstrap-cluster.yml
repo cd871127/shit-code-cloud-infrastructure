@@ -1,12 +1,4 @@
-#通用的配置
 spring:
   cloud:
     consul:
-      host: 172.28.0.11
-      port: 8500
-      config:
-        format: FILES
-        prefix: config/${spring.profiles.active}
-        watch:
-          enabled: true
-          delay: 1
+      host: localhost
