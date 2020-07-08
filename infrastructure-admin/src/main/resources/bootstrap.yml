@@ -1,11 +1,11 @@
-#应用个性化的配置
 spring:
+  application:
+    name: infrastructure-admin
   profiles:
-    active: dev
-  boot:
-    admin:
-      discovery:
-        ignored-services: consul
+    active: cluster
+    include: consul
+  main:
+    allow-bean-definition-overriding: true
   cloud:
     consul:
       port: 8500

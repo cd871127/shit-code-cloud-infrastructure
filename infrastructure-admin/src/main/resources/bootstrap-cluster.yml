@@ -1,4 +1,3 @@
-#应用个性化的配置
 spring:
   cloud:
     consul:

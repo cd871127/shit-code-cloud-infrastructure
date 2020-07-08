@@ -4,7 +4,7 @@ import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-//import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * @author Anthony Chen
@@ -12,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  **/
 @Slf4j
 @SpringBootApplication
-//@EnableDiscoveryClient
+@EnableDiscoveryClient
 @EnableAdminServer
 public class Main {
     public static void main(String[] args) {

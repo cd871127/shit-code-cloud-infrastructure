@@ -3,7 +3,7 @@ spring:
   application:
     name: infrastructure-gateway
   profiles:
-    active: dev
+    active: cluster
     include: admin
   cloud:
     gateway:

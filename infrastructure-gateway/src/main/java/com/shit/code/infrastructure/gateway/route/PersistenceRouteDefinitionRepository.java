@@ -20,7 +20,7 @@ import static java.util.Collections.synchronizedMap;
  * @date 2020/7/6
  **/
 @Slf4j
-@Component
+//@Component
 public class PersistenceRouteDefinitionRepository implements RouteDefinitionRepository {
     private final Map<String, RouteDefinition> routes = synchronizedMap(
             new LinkedHashMap<String, RouteDefinition>());
