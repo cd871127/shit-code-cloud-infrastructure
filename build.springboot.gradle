@@ -18,7 +18,8 @@ dependencies {
 }
 
 bootJar {
-//    rootSpec.exclude("**/*.yml")
+    //只移除config下面的yml
+    rootSpec.exclude("**/config/*.yml")
     archiveBaseName.set(project.name)
     archiveVersion.set("")
 }
