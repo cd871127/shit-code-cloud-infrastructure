@@ -1,3 +1,5 @@
 spring:
   application:
     name: infrastructure-admin
+  profiles:
+    active: consul
