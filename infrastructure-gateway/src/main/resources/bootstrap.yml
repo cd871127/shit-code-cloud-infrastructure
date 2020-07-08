@@ -1,16 +1,16 @@
+#个性化配置
 spring:
   application:
     name: infrastructure-gateway
   profiles:
-    include: common
-    active: admin,consul
+    active: dev
+    include: admin
   cloud:
     gateway:
       discovery:
         locator:
           enabled: true
           lower-case-service-id: true
-#          include-expression:
       routes:
         - id: test
           uri: http://www.baidu.com/s/

@@ -1,5 +1,11 @@
 #应用个性化的配置
 spring:
+  profiles:
+    active: dev
+  boot:
+    admin:
+      discovery:
+        ignored-services: consul
   cloud:
     consul:
       port: 8500
@@ -9,5 +15,3 @@ spring:
         watch:
           enabled: true
           delay: 1
-  profiles:
-    active: dev

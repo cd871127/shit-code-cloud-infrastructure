@@ -1,17 +1,11 @@
 #通用的配置
 spring:
+  application:
+    name: infrastructure-gateway
   main:
     allow-bean-definition-overriding: true
   cloud:
     consul:
-      host: localhost
-      port: 8500
-      config:
-        format: FILES
-        prefix: config/${spring.profiles.active}
-        watch:
-          enabled: true
-          delay: 1
       discovery:
         tags: version=0.0.1,author=cd871127
         healthCheckPath: /actuator/health

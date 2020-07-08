@@ -1,5 +1,7 @@
 #通用的配置
 spring:
+  application:
+    name: infrastructure-admin
   main:
     allow-bean-definition-overriding: true
   cloud:
@@ -14,12 +16,3 @@ spring:
         health-check-critical-timeout: 10s
         health-check-timeout: 5s
         deregister: true
-  profiles:
-    include: common
-    active: dev
-  application:
-    name: infrastructure-admin
-  boot:
-    admin:
-      discovery:
-        ignored-services: consul
