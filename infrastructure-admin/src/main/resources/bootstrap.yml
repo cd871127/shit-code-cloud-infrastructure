@@ -1,0 +1,14 @@
+#通用的配置
+#spring:
+#  cloud:
+#    consul:
+##      host: localhost
+#      port: 8500
+#      config:
+#        format: FILES
+#        prefix: config/${spring.profiles.active}
+#        watch:
+#          enabled: true
+#          delay: 1
+#  profiles:
+#    active: dev

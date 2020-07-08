@@ -2,10 +2,15 @@ spring:
   application:
     name: infrastructure-gateway
   profiles:
-#    include:
-    active: admin,datasource
+    include: common
+    active: admin,consul
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+#          include-expression:
       routes:
         - id: test
           uri: http://www.baidu.com/s/
@@ -13,10 +18,6 @@ spring:
             - Path=/*
           filters:
             - AddRequestParameter=wd, github
-
-server:
-  port: 8889
-
 management:
   endpoints:
     web:

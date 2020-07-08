@@ -1,5 +1,5 @@
 dependencies {
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-consul'
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-consul-discovery'
-    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-consul-config'
+//    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-consul-config'
 }
