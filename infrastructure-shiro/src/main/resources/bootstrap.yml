@@ -1,6 +1,6 @@
 spring:
   application:
-    name: infrastructure-gateway
+    name: infrastructure-shiro
   profiles:
     active: dev
     include: consul,admin
@@ -19,4 +19,4 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,status,gateway
+        include: health,status

@@ -1,6 +1,8 @@
 apply from: "${project.rootDir}/build.springboot.gradle"
-apply from: "${project.rootDir}/build.consul.gradle"
 version '0.1.0'
 dependencies {
     implementation group: 'de.codecentric', name: 'spring-boot-admin-starter-server', version: adminVersion
+}
+configurations {
+    all*.exclude group: 'de.codecentric', module: 'spring-boot-admin-starter-client'
 }
