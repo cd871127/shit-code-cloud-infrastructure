@@ -3,6 +3,6 @@ spring:
     admin:
       client:
         url:
-          - http://admin-1.shit-code.com:8080
+          - http://admin-standalone.shit-code.com:8080
         instance:
           prefer-ip: true
