@@ -27,7 +27,7 @@ spring:
     #脚本编码 默认UTF-8
     encoding: UTF-8
     #是否检查迁移脚本位置是否存在 默认true
-    check-location: true
+    check-location: false
     #迁移脚本的位置 默认classpath:db/migration
     locations:
       - classpath:db/migration
