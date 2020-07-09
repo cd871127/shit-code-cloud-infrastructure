@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    consul:
+      host: 172.28.0.11
+      discovery:
+        ip-address: 192.168.229.1
+        prefer-ip-address: true
+  boot:
+    admin:
+      client:
+        instance:
+          service-base-url: http://192.168.229.1
+          management-base-url: http://192.168.229.1
