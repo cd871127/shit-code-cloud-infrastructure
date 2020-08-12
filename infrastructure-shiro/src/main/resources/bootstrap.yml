@@ -3,7 +3,7 @@ spring:
     name: infrastructure-shiro
   profiles:
     active: dev
-    include: consul,admin
+    include: consul #,admin
   main:
     allow-bean-definition-overriding: true
   cloud:
@@ -19,4 +19,6 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,status
+        include: '*'
+server:
+  port: 8081

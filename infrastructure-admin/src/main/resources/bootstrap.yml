@@ -15,3 +15,7 @@ spring:
         watch:
           enabled: true
           delay: 1
+  boot:
+    admin:
+      discovery:
+        ignored-services: consul
