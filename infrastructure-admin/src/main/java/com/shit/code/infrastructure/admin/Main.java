@@ -16,6 +16,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @EnableAdminServer
 public class Main {
     public static void main(String[] args) {
+//https://codecentric.github.io/spring-boot-admin/2.2.3/#getting-started
         SpringApplication.run(Main.class, args);
     }
 }

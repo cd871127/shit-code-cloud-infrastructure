@@ -21,6 +21,7 @@ spring:
     admin:
       discovery:
         ignored-services: consul
+#        services: ['infrastructure-gateway']
   zipkin:
     sender:
       type: rabbit
