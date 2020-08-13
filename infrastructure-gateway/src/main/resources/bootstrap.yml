@@ -20,11 +20,12 @@ spring:
   zipkin:
     sender:
       type: rabbit
-#  boot:
-#    admin:
-#        client:
-#          auto-deregistration: true
-#          enabled: true
+  boot:
+    admin:
+      client:
+        auto-deregistration: true
+        instance:
+          prefer-ip: true
 logging:
   config: classpath:logback-spring.xml
 management:
