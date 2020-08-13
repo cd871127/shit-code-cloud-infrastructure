@@ -11,3 +11,5 @@ spring:
         health-check-critical-timeout: 10s
         health-check-timeout: 5s
         deregister: true
+test:
+  test: 123
