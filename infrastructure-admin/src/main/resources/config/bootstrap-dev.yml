@@ -7,10 +7,13 @@ spring:
     username: guest
     password: guest
     addresses: 172.28.0.41
-  security:
-    user:
-      name: admin
-      password: admin
+#  security:
+#    user:
+#      name: admin
+#      password: admin1
   output:
     ansi:
       enabled: always
+logging:
+  file:
+    path: D:/dev/log/${spring.application.name}

@@ -26,5 +26,13 @@ spring:
       type: rabbit
 logging:
   config: classpath:logback-spring.xml
-  file:
-    path: D:/dev/log
+management:
+  endpoint:
+    refresh:
+      enabled: true
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
