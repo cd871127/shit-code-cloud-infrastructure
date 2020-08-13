@@ -16,8 +16,11 @@ allprojects {
         maven {
             url aliYunMavenRepo
         }
+//        maven{
+//            url 'file:///C:/Dev/Cache/Maven'
+//        }
         maven{
-            url 'file:///C:/Dev/Cache/Maven'
+            url 'file:/home/anthony/.m2/repository'
         }
     }
 }
