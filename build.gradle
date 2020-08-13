@@ -41,5 +41,8 @@ subprojects {
     configurations {
         all*.exclude group: 'org.apache.logging.log4j', module: 'log4j-api'
         all*.exclude group: 'org.apache.logging.log4j', module: 'log4j-to-slf4j'
+        all*.exclude group: 'org.springframework.cloud', module: 'spring-cloud-starter-netflix-ribbon'
+        all*.exclude group: 'org.springframework.cloud', module: 'spring-cloud-netflix-ribbon'
+        all*.exclude group: 'org.springframework.cloud', module: 'spring-cloud-netflix-hystrix'
     }
 }

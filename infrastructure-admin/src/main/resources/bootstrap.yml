@@ -15,6 +15,7 @@ spring:
         watch:
           enabled: true
           delay: 1
+        enabled: true
   boot:
     admin:
       discovery:
