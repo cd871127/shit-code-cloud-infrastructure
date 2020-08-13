@@ -22,7 +22,8 @@ spring:
     admin:
       client:
         url: http://localhost:8080
-
+#server:
+#  port: 8081
 logging:
   file:
     path: D:/dev/log/${spring.application.name}
