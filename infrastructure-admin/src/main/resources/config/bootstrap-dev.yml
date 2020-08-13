@@ -6,10 +6,14 @@ spring:
 #        ip-address: 192.168.229.1
         prefer-ip-address: true
   rabbitmq:
-    host: 172.28.0.41
+    port: 5672
     username: guest
     password: guest
+    addresses: 172.28.0.41
   security:
     user:
       name: admin
       password: admin
+  output:
+    ansi:
+      enabled: always

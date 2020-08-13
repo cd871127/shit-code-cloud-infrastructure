@@ -16,6 +16,9 @@ allprojects {
         maven {
             url aliYunMavenRepo
         }
+        maven{
+            url 'file:///C:/Dev/Cache/Maven'
+        }
     }
 }
 
@@ -32,6 +35,7 @@ subprojects {
         implementation group: 'org.apache.commons', name: 'commons-lang3', version: commonsLang3Version
         implementation group: 'org.apache.commons', name: 'commons-collections4', version: commonsCollectionsVersion
         testImplementation group: 'junit', name: 'junit', version: '4.13'
+        implementation group: 'com.shit.code.cloud', name: 'shit-code-cloud-log', version: '0.1.0'
     }
 
     configurations {

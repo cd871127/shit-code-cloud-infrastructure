@@ -22,3 +22,7 @@ spring:
   zipkin:
     sender:
       type: rabbit
+logging:
+  config: classpath:logback-spring.xml
+  file:
+    path: D:/dev/log
