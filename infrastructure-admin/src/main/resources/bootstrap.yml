@@ -11,7 +11,8 @@ spring:
       port: 8500
       config:
         format: FILES
-        prefix: config/${spring.profiles.active}
+        prefix: config
+#        prefix: config/${spring.profiles.active}
         watch:
           enabled: true
           delay: 1
