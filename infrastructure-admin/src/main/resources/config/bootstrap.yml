@@ -2,7 +2,7 @@ spring:
   application:
     name: infrastructure-admin
   profiles:
-    include: consul,zipkin
+    include: consul,admin
   main:
     allow-bean-definition-overriding: true
   cloud:
@@ -16,13 +16,19 @@ spring:
           enabled: true
           delay: 1
         enabled: true
+  zipkin:
+    sender:
+      type: rabbit
+  sleuth:
+    sampler:
+      probability: 1.0
   boot:
     admin:
       discovery:
         ignored-services: consul
 #        services: ['infrastructure-gateway']
 logging:
-  config: classpath:logback-spring.xml
+  config: classpath:config/logback-spring.xml
 management:
   endpoint:
     refresh:

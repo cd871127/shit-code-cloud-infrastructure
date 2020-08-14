@@ -2,7 +2,7 @@ spring:
   application:
     name: infrastructure-gateway
   profiles:
-    include: consul,database,admin,zipkin
+    include: consul,database,admin
   main:
     allow-bean-definition-overriding: true
   cloud:
@@ -16,7 +16,12 @@ spring:
           enabled: true
           delay: 1
         enabled: true
-
+  zipkin:
+    sender:
+      type: rabbit
+  sleuth:
+    sampler:
+      probability: 1.0
   boot:
     admin:
       client:

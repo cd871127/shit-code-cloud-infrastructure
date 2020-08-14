@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: infrastructure-gateway
+  profiles:
+    include: consul,database,admin
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    consul:
+      port: 8500
+      config:
+        format: FILES
+        prefix: config
+#        prefix: config/${spring.profiles.active}
+        watch:
+          enabled: true
+          delay: 1
+        enabled: true
+  zipkin:
+    sender:
+      type: rabbit
+  sleuth:
+    sampler:
+      probability: 1.0
+  boot:
+    admin:
+      client:
+        auto-deregistration: true
+        instance:
+          prefer-ip: true
+logging:
+  config: classpath:logback-spring.xml
+management:
+  endpoint:
+    refresh:
+      enabled: true
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'

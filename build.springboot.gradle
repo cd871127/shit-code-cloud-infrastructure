@@ -29,6 +29,12 @@ bootJar {
 
 
 bootRun {
-    setMain("com.shit.code.infrastructure.${project.name.replace("infrastructure-","")}.Main")
+    setMain("com.shit.code.infrastructure.${project.name.replace("infrastructure-", "")}.Main")
     systemProperties.put("spring.profiles.active", "dev")
+}
+
+processResources {
+    from(rootDir.path+File.separator+"config"+File.separator+"local") {
+        include '*'
+    }
 }
