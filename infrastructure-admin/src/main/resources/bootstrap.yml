@@ -2,7 +2,7 @@ spring:
   application:
     name: infrastructure-admin
   profiles:
-    include: consul
+    include: consul,zipkin
   main:
     allow-bean-definition-overriding: true
   cloud:
@@ -21,9 +21,6 @@ spring:
       discovery:
         ignored-services: consul
 #        services: ['infrastructure-gateway']
-  zipkin:
-    sender:
-      type: rabbit
 logging:
   config: classpath:logback-spring.xml
 management:
