@@ -19,8 +19,13 @@ allprojects {
 //        maven{
 //            url 'file:///C:/Dev/Cache/Maven'
 //        }
-        maven{
-            url 'file:/home/anthony/.m2/repository'
+        maven {
+//            1788eee946bffae65fbb302968d90403eb5d8797
+            url 'https://maven.pkg.github.com/cd871127/shit-code-cloud-lib'
+            credentials {
+                username 'cd871127'
+                password '1788eee946bffae65fbb302968d90403eb5d8797'
+            }
         }
     }
 }

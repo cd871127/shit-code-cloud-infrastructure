@@ -7,10 +7,6 @@ spring:
     username: guest
     password: guest
     addresses: 172.28.0.41
-  security:
-    user:
-      name: admin
-      password: admin
   output:
     ansi:
       enabled: always
@@ -18,12 +14,6 @@ spring:
     url: jdbc:mysql://172.28.0.21:3306/?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password: 123456
-  boot:
-    admin:
-      client:
-        url: http://localhost:8080
-#server:
-#  port: 8081
 logging:
   file:
     path: D:/dev/log/${spring.application.name}
