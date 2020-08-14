@@ -53,4 +53,5 @@ subprojects {
         all*.exclude group: 'org.springframework.cloud', module: 'spring-cloud-netflix-ribbon'
         all*.exclude group: 'org.springframework.cloud', module: 'spring-cloud-netflix-hystrix'
     }
+
 }

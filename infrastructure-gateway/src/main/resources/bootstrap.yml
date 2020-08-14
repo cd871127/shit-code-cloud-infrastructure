@@ -2,7 +2,6 @@ spring:
   application:
     name: infrastructure-gateway
   profiles:
-    active: dev
     include: consul,database,admin
   main:
     allow-bean-definition-overriding: true

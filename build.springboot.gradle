@@ -30,4 +30,5 @@ bootJar {
 
 bootRun {
     setMain("com.shit.code.infrastructure.${project.name.replace("infrastructure-","")}.Main")
+    systemProperties.put("spring.profiles.active", "dev")
 }
