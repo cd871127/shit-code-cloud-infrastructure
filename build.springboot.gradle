@@ -11,7 +11,12 @@ dependencies {
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-consul'
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-consul-discovery'
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-consul-config'
-    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-zipkin'
+    implementation(group: 'org.springframework.cloud', name: 'spring-cloud-starter-zipkin') {
+        exclude group: 'io.zipkin.brave', module: 'brave-instrumentation-kafka-clients'
+        exclude group: 'io.zipkin.brave', module: 'brave-instrumentation-kafka-streams'
+        exclude group: 'io.zipkin.reporter2', module: 'zipkin-sender-activemq-client'
+        exclude group: 'io.zipkin.reporter2', module: 'zipkin-sender-kafka'
+    }
 
     implementation group: 'de.codecentric', name: 'spring-boot-admin-starter-client', version: adminVersion
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
@@ -31,10 +36,19 @@ bootJar {
 bootRun {
     setMain("com.shit.code.infrastructure.${project.name.replace("infrastructure-", "")}.Main")
     systemProperties.put("spring.profiles.active", "dev")
+    List<String> jvmArgList = new ArrayList<>()
+
+//    jvmArgList.add("-client")
+//    jvmArgList.add("-XX:+UnlockDiagnosticVMOptions")
+//    jvmArgList.add("-XX:+PrintAssembly")
+//    jvmArgList.add("-XX:+PrintCompilation")
+//
+//    jvmArgList.add("-XX:CompileCommand='print,com.shit.code.infrastructure.gateway.test.TestController.test'")
+    setJvmArgs(jvmArgList)
 }
 
 processResources {
-    from(rootDir.path+File.separator+"config"+File.separator+"local") {
+    from(rootDir.path + File.separator + "config" + File.separator + "local") {
         include '**'
     }
 }

@@ -1,3 +1,9 @@
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.shit.code.cloud.**.dao.dto
+  mapper-locations: classpath:sql-map/*.xml
+
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
