@@ -1,7 +1,7 @@
 package com.shit.code.infrastructure.gateway.test;
 
 import com.shit.code.infrastructure.gateway.dao.mapper.RouteMapper;
-import org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration;
+import org.springframework.data.redis.core.BoundHashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.time.Duration;
 import java.util.List;
 
 @RestController
@@ -26,7 +27,7 @@ public class TestController {
     private StringRedisTemplate stringRedisTemplate;
 
 
-    @GetMapping("/db/{name}")
+    @GetMapping("/db/get/{name}")
     Long test(@PathVariable("name") String name) {
         long start = System.currentTimeMillis();
         List<String> result = routeMapper.get(name);
@@ -34,15 +35,22 @@ public class TestController {
         return System.currentTimeMillis() - start;
     }
 
-    @GetMapping("redis/{key}/{value}")
-    String test2(@PathVariable("key") String key, @PathVariable("value") String value) {
-        redisTemplate.opsForValue().set(key, value);
-        return "ok";
+    @GetMapping("/db/add/{name}")
+    Integer test11(@PathVariable("name") String name) {
+        return routeMapper.insert(name);
     }
+
 
     @GetMapping("redis/{key}")
     String test2(@PathVariable("key") String key) {
+        BoundHashOperations<String, String, Object> boundHashOperations = redisTemplate.boundHashOps(key);
+        boundHashOperations.put("123", "123");
+        boundHashOperations.put("456", "12aaa3");
+        boundHashOperations.delete("123");
+        System.out.println(boundHashOperations.get("456"));
+        boundHashOperations.expire(Duration.ZERO);
 
-        return redisTemplate.opsForValue().get(key);
+        boundHashOperations.put("fff", "aaa");
+        return "ook";
     }
 }

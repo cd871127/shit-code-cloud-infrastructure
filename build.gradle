@@ -14,6 +14,9 @@ allprojects {
     version '0.1.0'
     repositories {
         maven {
+            url 'file:///home/anthony/.m2/repository'
+        }
+        maven {
             url aliYunMavenRepo
         }
         maven {
@@ -39,7 +42,7 @@ subprojects {
         implementation group: 'org.apache.commons', name: 'commons-lang3', version: commonsLang3Version
         implementation group: 'org.apache.commons', name: 'commons-collections4', version: commonsCollectionsVersion
         testImplementation group: 'junit', name: 'junit', version: '4.13'
-        implementation group: 'com.shit.code.cloud', name: 'shit-code-cloud-log', version: '0.1.0'
+        implementation group: 'com.shit.code.cloud', name: 'shit-code-cloud-logback', version: shitCodeLibVersion
     }
 
     configurations {

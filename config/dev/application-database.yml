@@ -3,3 +3,9 @@ spring:
     url: jdbc:mysql://172.28.0.21:3306/?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password: 123456
+
+shit:
+  code:
+    mybatis:
+      sql:
+        assemble: true
