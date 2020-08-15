@@ -7,7 +7,7 @@ spring:
       config:
         format: FILES
         prefix: config
-#        prefix: config/${spring.profiles.active}
+        #        prefix: config/${spring.profiles.active}
         watch:
           enabled: true
           delay: 1
@@ -25,6 +25,7 @@ spring:
 #        services: ['infrastructure-gateway']
 logging:
   config: classpath:config/logback-spring.xml
+
 management:
   endpoint:
     refresh:
