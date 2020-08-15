@@ -11,8 +11,3 @@ spring:
         health-check-critical-timeout: 10s
         health-check-timeout: 5s
         deregister: true
-  rabbitmq:
-    port: 5672
-    username: guest
-    password: guest
-    addresses: 172.28.0.41
