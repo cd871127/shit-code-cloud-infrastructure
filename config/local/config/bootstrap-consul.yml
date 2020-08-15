@@ -11,3 +11,12 @@ spring:
         health-check-critical-timeout: 10s
         health-check-timeout: 5s
         deregister: true
+        port: 8500
+      config:
+        format: FILES
+        prefix: config
+        #        prefix: config/${spring.profiles.active}
+        watch:
+          enabled: true
+          delay: 1
+        enabled: true

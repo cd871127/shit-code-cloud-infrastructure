@@ -1,17 +1,6 @@
 spring:
   main:
     allow-bean-definition-overriding: true
-  cloud:
-    consul:
-      port: 8500
-      config:
-        format: FILES
-        prefix: config
-        #        prefix: config/${spring.profiles.active}
-        watch:
-          enabled: true
-          delay: 1
-        enabled: true
   zipkin:
     sender:
       type: rabbit

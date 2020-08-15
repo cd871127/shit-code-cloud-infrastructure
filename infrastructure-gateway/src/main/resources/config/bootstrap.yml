@@ -2,12 +2,4 @@ spring:
   application:
     name: infrastructure-gateway
   profiles:
-    include: consul,database,admin,database1
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
-
-
+    include: consul,database,admin,common
