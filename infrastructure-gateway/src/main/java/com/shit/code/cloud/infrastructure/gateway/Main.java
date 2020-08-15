@@ -1,6 +1,5 @@
-package com.shit.code.infrastructure.admin;
+package com.shit.code.cloud.infrastructure.gateway;
 
-import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,11 +12,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @Slf4j
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableAdminServer
 public class Main {
+
     public static void main(String[] args) {
-//https://codecentric.github.io/spring-boot-admin/2.2.3/#getting-started
         SpringApplication.run(Main.class, args);
     }
-
 }

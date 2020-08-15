@@ -1,4 +1,4 @@
-package com.shit.code.infrastructure.shiro;
+package com.shit.code.cloud.infrastructure.shiro;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;

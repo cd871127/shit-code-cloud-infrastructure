@@ -1,4 +1,4 @@
-package com.shit.code.infrastructure.gateway.route;
+package com.shit.code.cloud.infrastructure.gateway.route;
 
 import org.junit.Test;
 import org.springframework.cloud.gateway.filter.FilterDefinition;

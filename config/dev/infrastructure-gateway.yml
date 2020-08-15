@@ -2,4 +2,4 @@ server:
   port: 8081
 logging:
   level:
-    com.shit.code.infrastructure.gateway.dao.mapper: debug
+    com.shit.code.cloud.infrastructure.gateway.dao.mapper: debug

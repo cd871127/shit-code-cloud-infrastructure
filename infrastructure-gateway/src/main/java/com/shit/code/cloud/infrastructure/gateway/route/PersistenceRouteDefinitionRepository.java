@@ -1,11 +1,9 @@
-package com.shit.code.infrastructure.gateway.route;
+package com.shit.code.cloud.infrastructure.gateway.route;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cloud.gateway.config.GatewayAutoConfiguration;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.cloud.gateway.route.RouteDefinitionRepository;
 import org.springframework.cloud.gateway.support.NotFoundException;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

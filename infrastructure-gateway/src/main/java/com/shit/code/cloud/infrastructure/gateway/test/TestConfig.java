@@ -1,4 +1,4 @@
-package com.shit.code.infrastructure.gateway.test;
+package com.shit.code.cloud.infrastructure.gateway.test;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
