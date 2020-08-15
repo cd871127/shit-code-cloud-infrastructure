@@ -1,6 +1,7 @@
 spring:
   cloud:
     consul:
+      port: 8500
       discovery:
         tags: version=0.0.1,author=cd871127
         healthCheckPath: /actuator/health
@@ -11,7 +12,6 @@ spring:
         health-check-critical-timeout: 10s
         health-check-timeout: 5s
         deregister: true
-        port: 8500
       config:
         format: FILES
         prefix: config
@@ -20,3 +20,14 @@ spring:
           enabled: true
           delay: 1
         enabled: true
+
+management:
+  endpoint:
+    refresh:
+      enabled: true
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
