@@ -21,13 +21,3 @@ spring:
           delay: 1
         enabled: true
 
-management:
-  endpoint:
-    refresh:
-      enabled: true
-    health:
-      show-details: always
-  endpoints:
-    web:
-      exposure:
-        include: '*'
