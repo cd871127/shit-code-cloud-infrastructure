@@ -2,7 +2,7 @@ spring:
   application:
     name: infrastructure-gateway
   profiles:
-    include: consul,database,admin
+    include: consul,database,admin,database1
   cloud:
     gateway:
       discovery:
