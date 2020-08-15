@@ -10,5 +10,4 @@ package com.shit.code.infrastructure.gateway.dao;
 public interface RouteMapper {
 
 
-
 }
