@@ -16,15 +16,11 @@ allprojects {
         maven {
             url aliYunMavenRepo
         }
-//        maven{
-//            url 'file:///C:/Dev/Cache/Maven'
-//        }
         maven {
-//            1788eee946bffae65fbb302968d90403eb5d8797
             url 'https://maven.pkg.github.com/cd871127/shit-code-cloud-lib'
             credentials {
                 username 'cd871127'
-                password '1788eee946bffae65fbb302968d90403eb5d8797'
+                password '12fb8c4271f1f2ff180f1716570b032001e79cc8'
             }
         }
     }

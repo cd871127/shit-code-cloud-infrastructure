@@ -1,8 +1,4 @@
 spring:
-  application:
-    name: infrastructure-gateway
-  profiles:
-    include: consul,database,admin
   main:
     allow-bean-definition-overriding: true
   cloud:
@@ -24,12 +20,11 @@ spring:
       probability: 1.0
   boot:
     admin:
-      client:
-        auto-deregistration: true
-        instance:
-          prefer-ip: true
+      discovery:
+        ignored-services: consul
+#        services: ['infrastructure-gateway']
 logging:
-  config: classpath:logback-spring.xml
+  config: classpath:config/logback-spring.xml
 management:
   endpoint:
     refresh:

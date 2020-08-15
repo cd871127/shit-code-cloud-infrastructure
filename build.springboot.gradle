@@ -34,7 +34,8 @@ bootRun {
 }
 
 processResources {
+    println(rootDir.path+File.separator+"config"+File.separator+"local")
     from(rootDir.path+File.separator+"config"+File.separator+"local") {
-        include '*'
+        include '**'
     }
 }
