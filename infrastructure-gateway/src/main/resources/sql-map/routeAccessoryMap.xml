@@ -3,10 +3,10 @@
 <mapper namespace="com.shit.code.cloud.infrastructure.gateway.dao.mapper.RouteAccessoryMapper">
 
     <select id="selectList" resultType="RouteAccessoryDTO">
-        select name, args, type, id, unique_id, version, status, create_by, create_time, update_by, update_time
-        from service_gateway_db.t_route_accessory
+        select name, args, type, route_id, unique_id, version, status, create_by, create_time, update_by, update_time
+        from gateway_db.t_route_accessory
         <where>
-            <if test="id!=null">id = #{id}</if>
+            <if test="routeId!=null">route_id = #{routeId}</if>
             <if test="name!=null">name = #{name}</if>
             <if test="type!=null">type = #{type}</if>
             <if test="uniqueId!=null">unique_id = #{uniqueId}</if>
@@ -14,18 +14,18 @@
     </select>
 
     <insert id="insertList" parameterType="java.util.List">
-        insert into service_gateway_db.t_route_accessory(name, args, type, id, status)
+        insert into gateway_db.t_route_accessory(name, args, type, route_id, status)
         value
         <trim suffixOverrides=",">
             <foreach collection="list" item="item">
-                (#{item.name},#{item.args,jdbcType=VARCHAR},#{item.type},#{item.id},#{item.status}),
+                (#{item.name},#{item.args,jdbcType=VARCHAR},#{item.type},#{item.routeId},#{item.status}),
             </foreach>
         </trim>
     </insert>
 
     <insert id="insert" parameterType="RouteAccessoryDTO">
-        insert into service_gateway_db.t_route_accessory(name, args, type, id, status)
-        values (#{name}, #{args,jdbcType=VARCHAR}, #{type}, #{id}, #{status})
+        insert into gateway_db.t_route_accessory(name, args, type, route_id, status)
+        values (#{name}, #{args,jdbcType=VARCHAR}, #{type}, #{routeId}, #{status})
     </insert>
 
 </mapper>

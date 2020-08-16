@@ -14,8 +14,8 @@ import org.springframework.cloud.gateway.handler.predicate.PredicateDefinition;
 @Data
 @NoArgsConstructor
 public class RouteAccessoryDTO extends BaseDTO {
-    public RouteAccessoryDTO(String id, AccessoryType accessoryType) {
-        this.id = id;
+    public RouteAccessoryDTO(String routeId, AccessoryType accessoryType) {
+        this.routeId = routeId;
         this.type = accessoryType;
     }
 
@@ -34,17 +34,17 @@ public class RouteAccessoryDTO extends BaseDTO {
     /**
      * 路由ID
      */
-    private String id;
+    private String routeId;
 
-    public static RouteAccessoryDTO fromDefinition(String id, FilterDefinition filterDefinition) {
-        RouteAccessoryDTO routeAccessoryDTO = new RouteAccessoryDTO(id, AccessoryType.FILTER);
+    public static RouteAccessoryDTO fromDefinition(String routeId, FilterDefinition filterDefinition) {
+        RouteAccessoryDTO routeAccessoryDTO = new RouteAccessoryDTO(routeId, AccessoryType.FILTER);
         routeAccessoryDTO.setName(filterDefinition.getName());
         routeAccessoryDTO.setArgs(JSONObject.toJSONString(filterDefinition.getArgs()));
         return routeAccessoryDTO;
     }
 
-    public static RouteAccessoryDTO fromDefinition(String id, PredicateDefinition predicateDefinition) {
-        RouteAccessoryDTO routeAccessoryDTO = new RouteAccessoryDTO(id, AccessoryType.PREDICATE);
+    public static RouteAccessoryDTO fromDefinition(String routeId, PredicateDefinition predicateDefinition) {
+        RouteAccessoryDTO routeAccessoryDTO = new RouteAccessoryDTO(routeId, AccessoryType.PREDICATE);
         routeAccessoryDTO.setName(predicateDefinition.getName());
         routeAccessoryDTO.setArgs(JSONObject.toJSONString(predicateDefinition.getArgs()));
         return routeAccessoryDTO;

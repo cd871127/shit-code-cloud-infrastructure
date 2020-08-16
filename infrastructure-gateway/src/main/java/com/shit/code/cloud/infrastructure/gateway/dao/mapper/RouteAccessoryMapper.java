@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface RouteAccessoryMapper {
 
-    int selectList(RouteAccessoryDTO routeAccessoryDTO);
+    List<RouteAccessoryDTO> selectList(RouteAccessoryDTO routeAccessoryDTO);
 
     int insert(RouteAccessoryDTO routeAccessoryDTO);
 

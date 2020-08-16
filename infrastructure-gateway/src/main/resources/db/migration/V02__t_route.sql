@@ -1,10 +1,10 @@
 create table IF NOT EXISTS gateway_db.t_route
 (
     id          varchar(32) PRIMARY KEY NOT NULL COMMENT '路由id',
-    uri         varchar(512)             NOT NULL COMMENT '路由uri',
+    uri         varchar(512)            NOT NULL COMMENT '路由uri',
     `order`     int UNSIGNED            NOT NULL default 2147483647 COMMENT '优先级',
     metadata    varchar(256) COMMENT '元数据',
-    unique_id   varchar(36)             COMMENT '唯一键',
+    unique_id   int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '唯一键',
     version     INT UNSIGNED            NOT NULL DEFAULT 0 COMMENT '乐观锁版本',
     status      varchar(12)             NOT NULL COMMENT '状态',
     create_by   VARCHAR(64)             NOT NULL default 'SYSTEM' COMMENT '创建人',
@@ -23,8 +23,8 @@ CREATE TRIGGER gateway_db.t_route_before_insert
     ON gateway_db.t_route
     FOR EACH ROW
 begin
-    if (new.unique_id = '' or new.unique_id is null) then
-        set new.unique_id = uuid();
+    if (new.create_time is null) then
+        set new.create_time = now();
     end if;
 end
 //
