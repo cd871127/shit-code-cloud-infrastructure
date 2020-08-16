@@ -7,6 +7,8 @@ import com.shit.code.cloud.infrastructure.gateway.dao.dto.RouteDTO;
 import com.shit.code.cloud.infrastructure.gateway.dao.mapper.RouteAccessoryMapper;
 import com.shit.code.cloud.infrastructure.gateway.dao.mapper.RouteMapper;
 import org.apache.commons.collections4.CollectionUtils;
+import org.springframework.cloud.gateway.filter.factory.GatewayFilterFactory;
+import org.springframework.cloud.gateway.handler.predicate.RoutePredicateFactory;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,6 +28,8 @@ public class RouteService {
 
     @Resource
     private RouteAccessoryMapper routeAccessoryMapper;
+
+
 
     /**
      * 添加一个路由

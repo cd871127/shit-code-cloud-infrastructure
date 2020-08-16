@@ -4,6 +4,7 @@ import com.shit.code.cloud.infrastructure.gateway.service.RouteService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.cloud.gateway.route.RouteDefinitionRepository;
+import org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import reactor.core.publisher.Flux;
@@ -28,7 +29,6 @@ public class PersistenceRouteDefinitionRepository implements RouteDefinitionRepo
         log.info("查询2");
         return Flux.fromIterable(Collections.emptyList());
     }
-
     @Override
     public Mono<Void> save(Mono<RouteDefinition> route) {
         log.info("保存2");

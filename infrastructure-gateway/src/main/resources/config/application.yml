@@ -6,11 +6,12 @@ spring:
           enabled: true
           lower-case-service-id: true
 
-      routes:
-        - id: host_route
-          uri: http://localhost:8001
-          predicates:
-            - Path=/{path}
-          filters:
-            - PrefixPath=/app
+#      routes:
+#        - id: host_route
+#          uri: http://localhost:8001
+#          predicates:
+#            - Path=/{path}
+#          filters:
+#            - PrefixPath=/app
+
 
