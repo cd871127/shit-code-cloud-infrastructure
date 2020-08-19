@@ -1,5 +1,6 @@
 apply plugin: "io.spring.dependency-management"
 apply plugin: "org.springframework.boot"
+apply from: "${project.rootDir}/build.docker.gradle"
 dependencyManagement {
     imports {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
@@ -57,14 +58,18 @@ processResources {
 }
 
 //bootBuildImage {
-//    imageName = "cd871127/${project.artifactId}:${project.version}"
+//    builder = 'cd871127/container:java11.consul1.8.0'
+//    runImage = 'cd871127/container:java11.consul1.8.0'
+//    imageName = "cd871127/${project.name}:${project.version}"
+//
 //    cleanCache = false
 //    verboseLogging = true
 //
-////    environment = [
-////            "HTTP_PROXY" : "http://proxy.example.com",
-////            "HTTPS_PROXY": "https://proxy.example.com"
-////    ]
+//    environment = [
+//            "DOCKER_HOST": "tcp://localhost:2376"
+////            "HTTP_PROXY" : "http://127.0.0.1:10088",
+////            "HTTPS_PROXY": "http://127.0.0.1:10088"
+//    ]
 //}
 
 //uploadBootArchives {

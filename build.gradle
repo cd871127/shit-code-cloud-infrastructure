@@ -3,8 +3,13 @@ buildscript {
         maven {
             url aliYunMavenRepo
         }
+        maven {
+            url "https://repository-cdn.liferay.com/nexus/content/groups/public"
+        }
     }
     dependencies {
+        classpath group: "com.liferay", name: "com.liferay.gradle.plugins.app.docker", version: "1.0.11"
+//        classpath group: "com.github.docker-java", name: "docker-java", version: "3.0.14"
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
@@ -23,13 +28,13 @@ allprojects {
                 password 'a16f0cdd23bdba3c1077b7e2a5c792835e57293a'
             }
         }
-
-
     }
+
 }
 
 subprojects {
     apply plugin: 'java'
+
 
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
