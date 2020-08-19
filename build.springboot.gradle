@@ -55,3 +55,22 @@ processResources {
         include '**'
     }
 }
+
+//bootBuildImage {
+//    imageName = "cd871127/${project.artifactId}:${project.version}"
+//    cleanCache = false
+//    verboseLogging = true
+//
+////    environment = [
+////            "HTTP_PROXY" : "http://proxy.example.com",
+////            "HTTPS_PROXY": "https://proxy.example.com"
+////    ]
+//}
+
+//uploadBootArchives {
+//    repositories {
+//        mavenDeployer {
+//            repository url: 'https://repo.example.com'
+//        }
+//    }
+//}

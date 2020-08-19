@@ -13,18 +13,17 @@ allprojects {
     group 'com.shit.code.cloud'
     version '0.1.0'
     repositories {
-
+        maven {
+            url aliYunMavenRepo
+        }
         maven {
             url 'https://maven.pkg.github.com/cd871127/shit-code-cloud-lib'
             credentials {
                 username 'cd871127'
-                password 'c5a91db091d4317806bc7b1d7fa26a65ac9adf7d'
+                password 'a16f0cdd23bdba3c1077b7e2a5c792835e57293a'
             }
         }
 
-        maven {
-            url aliYunMavenRepo
-        }
 
     }
 }
