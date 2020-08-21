@@ -2,16 +2,7 @@ apply plugin: "com.liferay.app.docker"
 
 //https://github.com/liferay/liferay-portal/tree/master/modules/sdk/gradle-plugins-app-docker
 //sudo apt install libunixsocket-java
-//task copyJar(type: Copy, dependsOn: bootJar, description: ''){
-//    from "${project.buildDir}/lib"
-//    into "${project.buildDir}/docker"
-//}
 
-//task copyDockerfile(type: Copy, dependsOn: copyJar, description: '') {
-//    from "${project.rootDir}/docker"
-//    into "${project.buildDir}/docker"
-//}
-//prepareAppDockerImageInputDir.from("${project.rootDir}/docker")
 prepareAppDockerImageInputDir {
     from("${project.rootDir}/docker")
     from("${project.buildDir}/libs")
@@ -23,5 +14,15 @@ prepareAppDockerImageInputDir {
     }
 }
 
+buildAppDockerImage {
+    Set<Object> dependTask = new HashSet<Object>()
+    dependTask.add(bootJar)
+    dependsOn = dependTask
 
-//buildAppDockerImage.dependsOn = copyDockerfile
+    List<Object> tags = new ArrayList<Object>()
+    tags.add(project.version)
+    tags.add("latest")
+    imageTags = tags
+    imageName = "cd871127/${project.name}"
+}
+
