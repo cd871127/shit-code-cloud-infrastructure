@@ -19,7 +19,7 @@ buildAppDockerImage {
     Set<Object> dependTask = new HashSet<Object>()
     dependTask.add(bootJar)
     dependsOn = dependTask
-    tag = "cd871127/${project.name}"
+    tag = "cd871127/${project.name}:${project.version}"
 }
 
 pushAppDockerImage {
