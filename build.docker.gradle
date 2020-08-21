@@ -14,15 +14,15 @@ prepareAppDockerImageInputDir {
     }
 }
 
+
 buildAppDockerImage {
     Set<Object> dependTask = new HashSet<Object>()
     dependTask.add(bootJar)
     dependsOn = dependTask
+    tag = project.version
+}
 
-    List<Object> tags = new ArrayList<Object>()
-    tags.add(project.version)
-    tags.add("latest")
-    imageTags = tags
+pushAppDockerImage {
     imageName = "cd871127/${project.name}"
 }
 
