@@ -21,6 +21,7 @@ allprojects {
         maven {
             url aliYunMavenRepo
         }
+        mavenLocal()
         maven {
             url 'https://maven.pkg.github.com/cd871127/shit-code-cloud-lib'
             credentials {
