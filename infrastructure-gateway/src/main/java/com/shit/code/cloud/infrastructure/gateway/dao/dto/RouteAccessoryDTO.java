@@ -1,6 +1,7 @@
 package com.shit.code.cloud.infrastructure.gateway.dao.dto;
 
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 import com.shit.code.cloud.common.dto.BaseDTO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -8,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.cloud.gateway.filter.FilterDefinition;
 import org.springframework.cloud.gateway.handler.predicate.PredicateDefinition;
+
+import java.util.HashMap;
 
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
@@ -48,6 +51,25 @@ public class RouteAccessoryDTO extends BaseDTO {
         routeAccessoryDTO.setName(predicateDefinition.getName());
         routeAccessoryDTO.setArgs(JSONObject.toJSONString(predicateDefinition.getArgs()));
         return routeAccessoryDTO;
+    }
+
+
+    public FilterDefinition toFilterDefinition() {
+        FilterDefinition filterDefinition = new FilterDefinition();
+        filterDefinition.setName(name);
+        filterDefinition.setArgs(JSONObject
+                .parseObject(args, new TypeReference<HashMap<String, String>>() {
+                }));
+        return filterDefinition;
+    }
+
+    public PredicateDefinition toPredicateDefinition() {
+        PredicateDefinition predicateDefinition = new PredicateDefinition();
+        predicateDefinition.setName(name);
+        predicateDefinition.setArgs(JSONObject
+                .parseObject(args, new TypeReference<HashMap<String, String>>() {
+                }));
+        return predicateDefinition;
     }
 
     public enum AccessoryType {

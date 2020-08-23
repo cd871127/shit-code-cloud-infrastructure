@@ -43,7 +43,7 @@ subprojects {
 
     dependencies {
         annotationProcessor group: 'org.projectlombok', name: 'lombok', version: lombokVersion
-        compileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+//        compileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVersion
         implementation group: 'org.apache.commons', name: 'commons-lang3', version: commonsLang3Version
         implementation group: 'org.apache.commons', name: 'commons-collections4', version: commonsCollectionsVersion
         testImplementation group: 'junit', name: 'junit', version: '4.13'

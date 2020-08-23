@@ -9,6 +9,7 @@ import lombok.ToString;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 
+import java.net.URI;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
 public class RouteDTO extends BaseDTO {
     private String id;
     private String uri;
-    private Integer order = Integer.MAX_VALUE;
+    private Integer order;
     private String metadata;
     private List<RouteAccessoryDTO> filters;
     private List<RouteAccessoryDTO> predicates;
@@ -39,7 +40,6 @@ public class RouteDTO extends BaseDTO {
         } else {
             routeDTO.setFilters(Collections.emptyList());
         }
-
         if (CollectionUtils.isNotEmpty(routeDefinition.getPredicates())) {
             routeDTO.setPredicates(routeDefinition.getPredicates().parallelStream().map(
                     predicateDefinition -> RouteAccessoryDTO.fromDefinition(id, predicateDefinition))
@@ -47,7 +47,27 @@ public class RouteDTO extends BaseDTO {
         } else {
             routeDTO.setPredicates(Collections.emptyList());
         }
-
         return routeDTO;
+    }
+
+    public RouteDefinition toDefinition() {
+        RouteDefinition routeDefinition = new RouteDefinition();
+        routeDefinition.setId(id);
+        routeDefinition.setMetadata(JSONObject.parseObject(metadata));
+        routeDefinition.setOrder(order);
+        routeDefinition.setUri(URI.create(uri));
+
+        if (CollectionUtils.isNotEmpty(filters)) {
+            routeDefinition.setFilters(filters.stream()
+                    .map(RouteAccessoryDTO::toFilterDefinition)
+                    .collect(Collectors.toList()));
+        }
+
+        if (CollectionUtils.isNotEmpty(predicates)) {
+            routeDefinition.setPredicates(predicates.stream()
+                    .map(RouteAccessoryDTO::toPredicateDefinition)
+                    .collect(Collectors.toList()));
+        }
+        return routeDefinition;
     }
 }

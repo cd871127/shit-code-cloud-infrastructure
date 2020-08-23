@@ -1,12 +1,15 @@
 package com.shit.code.cloud.infrastructure.gateway.dao.mapper;
 
-import com.shit.code.cloud.common.dto.BaseDTO;
 import com.shit.code.cloud.infrastructure.gateway.dao.dto.RouteDTO;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+/**
+ * @author anthony
+ */
 @Mapper
 public interface RouteMapper {
 
@@ -14,8 +17,22 @@ public interface RouteMapper {
 
     int updateById(RouteDTO routeDTO);
 
-    RouteDTO selectOne(@Param("id") String id, @Param("status") BaseDTO.Status status, @Param("uniqueId") String uniqueId);
+    /**
+     * 查询单个记录
+     *
+     * @param routeDTO
+     * @return
+     */
+    RouteDTO selectOne(RouteDTO routeDTO);
 
-    List<RouteDTO> selectList(@Param("status") BaseDTO.Status status);
+    /**
+     * 查询多个记录
+     *
+     * @param routeDTO
+     * @return
+     */
+    List<RouteDTO> selectList(RouteDTO routeDTO);
 
+    @Delete("delete from gateway_db.t_route where id=#{id}")
+    int deleteById(@Param("id") String id);
 }

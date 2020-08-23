@@ -7,8 +7,6 @@ import com.shit.code.cloud.infrastructure.gateway.dao.dto.RouteDTO;
 import com.shit.code.cloud.infrastructure.gateway.dao.mapper.RouteAccessoryMapper;
 import com.shit.code.cloud.infrastructure.gateway.dao.mapper.RouteMapper;
 import org.apache.commons.collections4.CollectionUtils;
-import org.springframework.cloud.gateway.filter.factory.GatewayFilterFactory;
-import org.springframework.cloud.gateway.handler.predicate.RoutePredicateFactory;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Anthony
@@ -29,7 +28,15 @@ public class RouteService {
     @Resource
     private RouteAccessoryMapper routeAccessoryMapper;
 
-
+    /**
+     * 查询所有路由
+     *
+     * @return
+     */
+    public List<RouteDefinition> allRoutes() {
+        return routeMapper.selectList(null).stream()
+                .map(RouteDTO::toDefinition).collect(Collectors.toList());
+    }
 
     /**
      * 添加一个路由
@@ -67,10 +74,13 @@ public class RouteService {
     /**
      * 删除路由
      *
-     * @param id 路由id
+     * @param routeId 路由id
      */
-    public void delete(String id) {
-
+    @Transactional(rollbackFor = Exception.class)
+    public boolean delete(String routeId) {
+        routeAccessoryMapper.deleteByRouteId(routeId);
+        int count = routeMapper.deleteById(routeId);
+        return count > 0;
     }
 
     /**
