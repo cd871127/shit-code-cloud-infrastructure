@@ -26,7 +26,7 @@ allprojects {
             url 'https://maven.pkg.github.com/cd871127/shit-code-cloud-lib'
             credentials {
                 username 'cd871127'
-                password '7362e7ad5c3fc6b988ef6e93c46f55e7a84fdee8'
+                password 'fdfb9a8b6a8371a54bd47bd4226e233cf71cfb88'
             }
         }
     }
