@@ -1,6 +1,8 @@
 package com.shit.code.cloud.infrastructure.gateway.dao.mapper;
 
 import com.shit.code.cloud.infrastructure.gateway.dao.dto.RouteDTO;
+import com.shit.code.cloud.mybatis.cache.RedisCache;
+import org.apache.ibatis.annotations.CacheNamespace;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -11,6 +13,7 @@ import java.util.List;
  * @author anthony
  */
 @Mapper
+@CacheNamespace(implementation= RedisCache.class)
 public interface RouteMapper {
 
     int insert(RouteDTO routeDTO);

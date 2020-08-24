@@ -1,13 +1,13 @@
 package com.shit.code.cloud.infrastructure.gateway.dao.mapper;
 
 import com.shit.code.cloud.infrastructure.gateway.dao.dto.RouteAccessoryDTO;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
+import com.shit.code.cloud.mybatis.cache.RedisCache;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
 @Mapper
+@CacheNamespace(implementation= RedisCache.class)
 public interface RouteAccessoryMapper {
 
     List<RouteAccessoryDTO> selectList(RouteAccessoryDTO routeAccessoryDTO);
