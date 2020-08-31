@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.shit.code.cloud.infrastructure.gateway.dao.mapper.RouteAccessoryMapper">
 
-    <select id="selectList" resultType="RouteAccessoryDTO">
+    <select id="selectList" resultType="com.shit.code.cloud.infrastructure.gateway.dao.dto.RouteAccessoryDTO">
         select name, args, type, route_id, unique_id, version, status, create_by, create_time, update_by, update_time
         from gateway_db.t_route_accessory
         <where>

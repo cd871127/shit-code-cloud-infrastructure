@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.*;
 import java.util.List;
 
 @Mapper
-@CacheNamespace(implementation= RedisCache.class)
+//@CacheNamespace(implementation= RedisCache.class)
 public interface RouteAccessoryMapper {
 
     List<RouteAccessoryDTO> selectList(RouteAccessoryDTO routeAccessoryDTO);

@@ -99,13 +99,15 @@ public class RouteController {
 //                () -> ThreadWrapper.wrap(routePredicates.parallelStream(), mdcContext)
                 () -> routePredicates.parallelStream()
 //                        .peek(a -> tracer.withSpanInScope(span))
-                        .peek(a -> tracer.withSpanInScope(span))
+//                        .peek(a -> tracer.withSpanInScope(span))
                         .map(this::extractAccessoryInfo)
                         .peek(accessoryEntity -> {
-                            log.info("tracer:{}", tracer.currentSpan().context().traceIdString());
+//                            log.info("tracer:{}", tracer.currentSpan().context().traceIdString());
                             log.info("MDC:{}", MDC.get("X-B3-TraceId"));
                         })
                         .collect(Collectors.toList()));
+
+
         List<AccessoryEntity> list = forkJoinTask.get(3000, TimeUnit.SECONDS);
 
 

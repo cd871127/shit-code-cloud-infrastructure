@@ -18,8 +18,12 @@ allprojects {
     group 'com.shit.code.cloud'
     version '0.1.0'
     repositories {
+
         maven {
             url aliYunMavenRepo
+        }
+        maven{
+            url 'file://C:\\Dev\\Cache\\Maven'
         }
         mavenLocal()
         maven {
