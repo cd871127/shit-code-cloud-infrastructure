@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: infrastructure-test
+  profiles:
+    include: consul,common,redis

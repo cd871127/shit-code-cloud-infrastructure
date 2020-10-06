@@ -2,4 +2,5 @@ rootProject.name = 'shit-code-cloud-infrastructure'
 include 'infrastructure-gateway'
 include 'infrastructure-admin'
 include 'infrastructure-shiro'
+include 'infrastructure-test'
 

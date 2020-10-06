@@ -22,9 +22,9 @@ allprojects {
         maven {
             url aliYunMavenRepo
         }
-        maven{
-            url 'file://C:\\Dev\\Cache\\Maven'
-        }
+//        maven{
+//            url 'file://C:\\Dev\\Cache\\Maven'
+//        }
         mavenLocal()
         maven {
             url 'https://maven.pkg.github.com/cd871127/shit-code-cloud-lib'
