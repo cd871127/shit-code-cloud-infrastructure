@@ -1,8 +1,14 @@
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.shit.code.cloud.**.dao.dto
+  mapper-locations: classpath:sql-map/*.xml
+
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://mysql-1.shit-code.com:3306/${spring.application.name}?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://mysql-master.shit-code.com:3306/${spring.application.name}?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password: 123456
     # Hikari 连接池配置
@@ -22,7 +28,6 @@ spring:
       # 数据库连接超时时间,默认30秒，即30000
       connection-timeout: 30000
       connection-test-query: SELECT 1
-
   flyway:
     #脚本编码 默认UTF-8
     encoding: UTF-8
@@ -35,9 +40,12 @@ spring:
     #链接重试次数 默认0
     connect-retries: 0
     #设定需要flyway迁移的schema，大小写敏感 默认为连接默认的schema
-    schemas: ['flyway-${spring.application.name}']
+    schemas: ['flyway_schema_history']
+    #    schemas: ['flyway_schema']
+    #    defaultSchema: 'flyway_schema'
     #flyway使用的元数据表名 默认flyway_schema_history
-    table: flyway_schema_history
+    table: ${spring.application.name}_schema_history
+    #    table: flyway_schema_history
     #Tablespace in which the schema history table is created
     #tablespace:
     #baseline描述 默认 << Flyway Baseline >>
