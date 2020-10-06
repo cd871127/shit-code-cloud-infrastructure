@@ -2,5 +2,5 @@ spring:
   boot:
     admin:
       discovery:
-        ignored-services: consul
+        ignored-services: ['consul']
   #        services: ['infrastructure-gateway']

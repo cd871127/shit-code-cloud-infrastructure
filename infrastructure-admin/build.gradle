@@ -4,6 +4,6 @@ dependencies {
     implementation group: 'de.codecentric', name: 'spring-boot-admin-starter-server', version: adminVersion
 //    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security'
 }
-configurations {
-    all*.exclude group: 'de.codecentric', module: 'spring-boot-admin-starter-client'
-}
+//configurations {
+//    all*.exclude group: 'de.codecentric', module: 'spring-boot-admin-starter-client'
+//}

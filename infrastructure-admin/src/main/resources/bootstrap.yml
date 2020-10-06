@@ -2,4 +2,4 @@ spring:
   application:
     name: infrastructure-admin
   profiles:
-    include: consul,common
+    include: consul,common,admin
