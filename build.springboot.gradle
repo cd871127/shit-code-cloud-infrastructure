@@ -29,6 +29,9 @@ dependencies {
 
     implementation group: 'com.shit.code.cloud', name: 'shit-code-cloud-common', version: '0.1.2'
     implementation group: 'com.alibaba', name: 'fastjson', version: fastJsonVersion
+
+    // https://mvnrepository.com/artifact/com.github.ben-manes.caffeine/caffeine
+    implementation group: 'com.github.ben-manes.caffeine', name: 'caffeine', version: '2.8.5'
 }
 
 bootJar {
