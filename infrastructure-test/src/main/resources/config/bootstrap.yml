@@ -3,3 +3,6 @@ spring:
     name: infrastructure-test
   profiles:
     include: consul,common,redis
+
+server:
+  port: 8081

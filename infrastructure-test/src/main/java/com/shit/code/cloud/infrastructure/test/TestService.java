@@ -1,5 +1,6 @@
 package com.shit.code.cloud.infrastructure.test;
 
+import com.shit.code.cloud.cache.annotation.MultiLevelCachePut;
 import com.shit.code.cloud.cache.annotation.MultiLevelCacheable;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -16,12 +17,13 @@ public class TestService {
     @Resource
     private StringRedisTemplate stringRedisTemplate;
 
-
-    @MultiLevelCacheable(key = "test")
-    public void redisSet(String key, String value) {
+    @MultiLevelCachePut(key = "'test'", ttl = 40000L)
+    public String redisSet(String key, String value) {
         stringRedisTemplate.opsForValue().set(key, value);
+        return value;
     }
 
+    @MultiLevelCacheable(key = "'test'", ttl = 50000L)
     public String redisGet(String key) {
         return stringRedisTemplate.opsForValue().get(key);
     }
