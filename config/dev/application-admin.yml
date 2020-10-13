@@ -3,8 +3,3 @@ spring:
     admin:
       client:
         url: http://172.28.0.101:8080
-        auto-deregistration: true
-        instance:
-          prefer-ip: true
-          service-base-url: http://${spring.cloud.client.ip-address}:${server.port}
-          management-base-url: http://${spring.cloud.client.ip-address}:${server.port}
