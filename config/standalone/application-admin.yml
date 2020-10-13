@@ -1,8 +1,0 @@
-spring:
-  boot:
-    admin:
-      client:
-        url:
-          - http://admin-standalone.shit-code.com:8080
-        instance:
-          prefer-ip: true
