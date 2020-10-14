@@ -80,7 +80,7 @@ spring:
     #当初始化好连接时要执行的SQL
     #init-sqls:
     #当迁移时发现目标schema非空，而且带有没有元数据的表时，是否自动执行基准迁移，默认false
-    baseline-on-migrate: false
+    baseline-on-migrate: true
     #是否清空db
     clean-disabled: true
     #当发现校验错误时是否自动调用clean
