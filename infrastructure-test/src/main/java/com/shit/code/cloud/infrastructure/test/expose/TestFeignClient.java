@@ -1,4 +1,4 @@
-package com.shit.code.cloud.infrastructure.test;
+package com.shit.code.cloud.infrastructure.test.expose;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

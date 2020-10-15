@@ -1,6 +1,7 @@
 apply from: "${project.rootDir}/build.springboot.gradle"
 apply from: "${project.rootDir}/build.redis.gradle"
 apply from: "${project.rootDir}/build.openfeign.gradle"
+apply from: "${project.rootDir}/build.service.gradle"
 
 version '0.1.0'
 

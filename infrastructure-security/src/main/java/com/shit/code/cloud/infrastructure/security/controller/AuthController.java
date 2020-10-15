@@ -1,10 +1,9 @@
 package com.shit.code.cloud.infrastructure.security.controller;
 
-import com.shit.code.cloud.infrastructure.security.client.TestService;
+import com.shit.code.cloud.infrastructure.test.expose.TestFeignClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
 import shit.code.cloud.spring.response.ShitCodeHttpResponse;
 
 import javax.annotation.Resource;
@@ -15,11 +14,13 @@ import javax.annotation.Resource;
  **/
 @Slf4j
 @RestController
-@RestControllerAdvice
 public class AuthController {
+    public AuthController(){
+        log.info("====================");
+    }
 
     @Resource
-    private TestService testService;
+    private TestClient testClient;
 
     @GetMapping("auth")
     public ShitCodeHttpResponse<String> ok() {
@@ -28,8 +29,8 @@ public class AuthController {
 
     @GetMapping("auth2")
     public ShitCodeHttpResponse<String> ok2() {
-        testService.redisSet("aaaa", "11111");
-        log.info("test:{}", testService.redisGet("aaaa"));
+        testClient.redisSet("aaaa", "11111");
+        log.info("test:{}", testClient.redisGet("aaaa"));
         log.info("======哦啦啦");
         return new ShitCodeHttpResponse<>("ok");
     }

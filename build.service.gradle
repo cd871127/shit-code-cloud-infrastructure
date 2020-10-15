@@ -1,0 +1,49 @@
+apply plugin: 'maven-publish'
+
+task compileSevice(type: JavaCompile, description: '编译接口jar包') {
+    sourceCompatibility = compileJava.sourceCompatibility
+    targetCompatibility = compileJava.targetCompatibility
+    source = compileJava.source
+    include '**/expose/'
+//    include '**/dto/'
+    destinationDirectory = compileJava.destinationDirectory
+    classpath = compileJava.classpath
+    //使用annotationProcessor
+    options.annotationProcessorPath = compileJava.options.annotationProcessorPath
+    options.annotationProcessorGeneratedSourcesDirectory = compileJava.options.annotationProcessorGeneratedSourcesDirectory
+}
+
+task buildSevice(type: Jar, dependsOn: compileSevice, description: '构建接口jar包') {
+//    from fileTree(dir: 'build/classes/java/main', includes: ['**/expose/', '**/dto/'], excludes: ['**/service/impl/'])
+    from fileTree(dir: 'build/classes/java/main', includes: ['**/expose/'])
+    includeEmptyDirs = false
+    archiveAppendix = 'service'
+    destinationDirectory = jar.destinationDirectory
+}
+
+publishing {
+    publications {
+        serviceJar(MavenPublication) {
+            artifact buildSevice
+            artifactId "${project.name}-service"
+            pom {
+                name = "Shit-Code.${project.name}"
+                description = "A demonstration of Maven POM customization"
+                url = "http://www.shit-code.com"
+                licenses {
+                    license {
+                        name = "The Apache License, Version 2.0"
+                        url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "cd871127"
+                        name = "Anthony"
+                        email = "cdistc@163.com"
+                    }
+                }
+            }
+        }
+    }
+}

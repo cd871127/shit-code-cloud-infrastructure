@@ -1,5 +1,6 @@
 package com.shit.code.cloud.infrastructure.test;
 
+import com.shit.code.cloud.infrastructure.test.expose.TestFeignClient;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
