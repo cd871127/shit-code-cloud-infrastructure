@@ -1,9 +1,9 @@
 apply from: "${project.rootDir}/build.springboot.gradle"
 apply from: "${project.rootDir}/build.database.gradle"
 apply from: "${project.rootDir}/build.redis.gradle"
+apply from: "${project.rootDir}/build.openfeign.gradle"
 
 version '0.1.0'
 
 dependencies {
-    implementation group: 'io.github.resilience4j', name: 'resilience4j-spring-boot2', version: resilience4jVersion
 }
