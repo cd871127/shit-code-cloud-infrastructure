@@ -45,8 +45,8 @@ bootJar {
 
 bootRun {
     setMain("com.shit.code.cloud.infrastructure.${project.name.replace("infrastructure-", "")}.Main")
-//    systemProperties.put("spring.profiles.active", "cluster")
-    systemProperties.put("spring.profiles.active", "dev")
+    systemProperties.put("spring.profiles.active", "cluster")
+//    systemProperties.put("spring.profiles.active", "dev")
     List<String> jvmArgList = new ArrayList<>()
 
 //    jvmArgList.add("-client")

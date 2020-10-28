@@ -1,7 +1,7 @@
 package com.shit.code.cloud.infrastructure.security.service.authentication;
 
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
  * 鉴权服务
@@ -11,4 +11,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  */
 @FeignClient(name = "infrastructure-security")
 public interface AuthenticationService {
+
+    String token();
 }

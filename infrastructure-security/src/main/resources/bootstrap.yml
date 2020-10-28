@@ -3,3 +3,6 @@ spring:
     name: infrastructure-security
   profiles:
     include: consul,database,admin,common,redis
+
+server:
+  port: 8080

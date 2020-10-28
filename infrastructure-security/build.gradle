@@ -8,16 +8,7 @@ version '0.1.0'
 
 dependencies {
     implementation group: 'com.shit.code.cloud', name: 'infrastructure-test-service', version: '0.1.0'
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security'
     implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
-    implementation group: 'org.springframework.cloud', name: 'spring-cloud-security'
-    implementation group: 'org.springframework.security.oauth', name: 'spring-security-oauth2',version: '2.5.0.RELEASE'
     implementation 'javax.xml.bind:jaxb-api:2.3.1'
-
-
-//    implementation group: 'org.springframework.security.oauth', name: 'spring-security-oauth2'
-//    implementation group: 'org.springframework.security', name: 'spring-security-jwt'
-//    implementation group: 'org.springframework.security.oauth.boot', name: 'spring-security-oauth2-autoconfigure'
-//    compile 'io.jsonwebtoken:jjwt:0.9.1'
+    implementation group: 'org.apache.shiro', name: 'shiro-spring', version: '1.6.0'
 }
-//compile 'io.jsonwebtoken:jjwt:0.9.1'

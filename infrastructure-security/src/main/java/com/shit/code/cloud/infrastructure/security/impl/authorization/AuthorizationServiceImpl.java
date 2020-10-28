@@ -7,5 +7,5 @@ package com.shit.code.cloud.infrastructure.security.impl.authorization;
  * @date 2020/10/28
  */
 
-public interface AuthorizationServiceImpl {
+public class AuthorizationServiceImpl {
 }

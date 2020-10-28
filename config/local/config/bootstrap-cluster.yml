@@ -7,8 +7,6 @@ spring:
     username: guest
     password: guest
     addresses: rabbit.shit-code.com
-  zipkin:
-    base-url: zipkin-1.shit-code.com:8080
   #  security:
 #    user:
 #      name: admin
@@ -23,9 +21,8 @@ shit:
       sql:
         #打印完整sql日志
         assemble: true
-server:
-  port: 8080
 
 logging:
+  config: classpath:config/logback-spring.xml
   file:
     path: /tmp/log
