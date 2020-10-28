@@ -1,1 +1,3 @@
-
+#shiro:
+#  annotations:
+#    enabled: false

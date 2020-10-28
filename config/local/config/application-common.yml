@@ -8,7 +8,8 @@ spring:
     sampler:
       probability: 1.0
     trace-id128: true
-
+logging:
+  config: classpath:config/logback-spring.xml
 
 management:
   endpoint:

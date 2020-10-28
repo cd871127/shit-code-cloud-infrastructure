@@ -1,6 +1,5 @@
 package com.shit.code.cloud.infrastructure.security.service.authentication;
 
-import org.apache.shiro.authc.UsernamePasswordToken;
 import org.springframework.cloud.openfeign.FeignClient;
 
 /**

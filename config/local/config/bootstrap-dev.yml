@@ -24,6 +24,5 @@ shit:
         #打印完整sql日志
         assemble: true
 logging:
-  config: classpath:config/logback-spring-dev.xml
   file:
     path: /app/log
