@@ -4,7 +4,7 @@ task compileSevice(type: JavaCompile, description: '编译接口jar包') {
     sourceCompatibility = compileJava.sourceCompatibility
     targetCompatibility = compileJava.targetCompatibility
     source = compileJava.source
-    include '**/expose/'
+    include '**/service/'
 //    include '**/dto/'
     destinationDirectory = compileJava.destinationDirectory
     classpath = compileJava.classpath
@@ -15,7 +15,7 @@ task compileSevice(type: JavaCompile, description: '编译接口jar包') {
 
 task buildSevice(type: Jar, dependsOn: compileSevice, description: '构建接口jar包') {
 //    from fileTree(dir: 'build/classes/java/main', includes: ['**/expose/', '**/dto/'], excludes: ['**/service/impl/'])
-    from fileTree(dir: 'build/classes/java/main', includes: ['**/expose/'])
+    from fileTree(dir: 'build/classes/java/main', includes: ['**/service/'])
     includeEmptyDirs = false
     archiveAppendix = 'service'
     destinationDirectory = jar.destinationDirectory
