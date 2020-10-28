@@ -36,13 +36,13 @@ public class Jwt {
 
         String token = Jwts
                 .builder()
-                .setSubject(SUBJECT)
+                .setSubject(b)
                 .setClaims(map)
                 .claim("id", a)
-                .claim("name", b)
                 .setIssuedAt(new Date())
+//                .setExpiration(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRITION))
-                .signWith(SignatureAlgorithm.HS256, APPSECRET_KEY).compact();
+                .signWith(SignatureAlgorithm.HS512, APPSECRET_KEY).compact();
         return token;
     }
 
@@ -138,21 +138,18 @@ public class Jwt {
 		String token = generateJsonWebToken("cd871127","test12345");
 
 		System.out.println(token);
-
-		Claims claims = checkJWT(token);
-		if (claims != null) {
-			String id = claims.get("id").toString();
-			String name = claims.get("name").toString();
-			String img = claims.get("img").toString();
-
-			String rol = claims.get("rol").toString();
-
-			System.out.println("id:" + id);
-			System.out.println("name:" + name);
-			System.out.println("img:" + img);
-
-			System.out.println("rol:" + rol);
-		}
+        final Claims claims = Jwts.parser().setSigningKey(APPSECRET_KEY).parseClaimsJws(token).getBody();
+        System.out.println(Jwts.parser().setSigningKey(APPSECRET_KEY).parse(token).getBody());
+//		Claims claims = checkJWT(token);
+//		if (claims != null) {
+//			String id = claims.get("id").toString();
+//			String name = claims.get("name").toString();
+//
+//
+//			System.out.println("id:" + id);
+//			System.out.println("name:" + name);
+//
+//		}
 
 	}
 
