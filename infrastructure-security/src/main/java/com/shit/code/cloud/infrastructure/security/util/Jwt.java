@@ -27,10 +27,10 @@ public class Jwt {
 
     private static final String ROLE_CLAIMS = "rol";
 
-    public static String generateJsonWebToken(String a,String b) {
+    public static String generateJsonWebToken(String a, String b) {
 
 
-        Map<String,Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
         map.put(ROLE_CLAIMS, "rol");
 
         String token = Jwts
@@ -47,20 +47,21 @@ public class Jwt {
 
     /**
      * 生成token
+     *
      * @param username
      * @param role
      * @return
      */
-    public static String createToken(String username,String role) {
+    public static String createToken(String username, String role) {
 
-        Map<String,Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
         map.put(ROLE_CLAIMS, role);
 
         String token = Jwts
                 .builder()
                 .setSubject(username)
                 .setClaims(map)
-                .claim("username",username)
+                .claim("username", username)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRITION))
                 .signWith(SignatureAlgorithm.HS256, APPSECRET_KEY).compact();
@@ -79,30 +80,33 @@ public class Jwt {
 
     /**
      * 获取用户名
+     *
      * @param token
      * @return
      */
-    public static String getUsername(String token){
+    public static String getUsername(String token) {
         Claims claims = Jwts.parser().setSigningKey(APPSECRET_KEY).parseClaimsJws(token).getBody();
         return claims.get("username").toString();
     }
 
     /**
      * 获取用户角色
+     *
      * @param token
      * @return
      */
-    public static String getUserRole(String token){
+    public static String getUserRole(String token) {
         Claims claims = Jwts.parser().setSigningKey(APPSECRET_KEY).parseClaimsJws(token).getBody();
         return claims.get("rol").toString();
     }
 
     /**
      * 是否过期
+     *
      * @param token
      * @return
      */
-    public static boolean isExpiration(String token){
+    public static boolean isExpiration(String token) {
         Claims claims = Jwts.parser().setSigningKey(APPSECRET_KEY).parseClaimsJws(token).getBody();
         return claims.getExpiration().before(new Date());
     }
@@ -131,12 +135,12 @@ public class Jwt {
      * @param args
      */
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
 
-		String token = generateJsonWebToken("cd871127","test12345");
+        String token = generateJsonWebToken("cd871127", "test12345");
 
-		System.out.println(token);
+        System.out.println(token);
         final Claims claims = Jwts.parser().setSigningKey(APPSECRET_KEY).parseClaimsJws(token).getBody();
         System.out.println(Jwts.parser().setSigningKey(APPSECRET_KEY).parse(token).getBody());
 //		Claims claims = checkJWT(token);
@@ -150,6 +154,6 @@ public class Jwt {
 //
 //		}
 
-	}
+    }
 
 }

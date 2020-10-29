@@ -1,6 +1,5 @@
 package com.shit.code.cloud.infrastructure.security.controller;
 
-import com.shit.code.cloud.common.entity.BaseEntity;
 import com.shit.code.cloud.infrastructure.security.dao.entity.SubjectEntity;
 import com.shit.code.cloud.infrastructure.security.service.SubjectService;
 import org.springframework.web.bind.annotation.*;

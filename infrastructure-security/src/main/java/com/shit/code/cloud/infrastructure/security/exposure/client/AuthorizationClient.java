@@ -8,6 +8,6 @@ import org.springframework.cloud.openfeign.FeignClient;
  * @author anthonychen
  * @date 2020/10/28
  */
-@FeignClient(name = "infrastructure-security",path = "/authorization")
+@FeignClient(name = "infrastructure-security", path = "/authorization")
 public interface AuthorizationClient {
 }
