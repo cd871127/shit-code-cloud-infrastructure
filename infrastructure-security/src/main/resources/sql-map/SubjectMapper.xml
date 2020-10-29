@@ -11,9 +11,10 @@
     <update id="updateBySubjectId" parameterType="subjectEntity">
         update security_db.t_subject
         <trim prefix="set" suffixOverrides=",">
-            <if test="password!=null">password = #{password}</if>
-            <if test="fingerprint!=null">fingerprint = #{fingerprint}</if>
-            <if test="faceIdentification!=null">face_identification = #{faceIdentification}</if>
+            <if test="password!=null">password = #{password},</if>
+            <if test="fingerprint!=null">fingerprint = #{fingerprint},</if>
+            <if test="faceIdentification!=null">face_identification = #{faceIdentification},</if>
+            <if test="status!=null">status = #{status},</if>
         </trim>
         where subject_id = #{subjectId}
     </update>

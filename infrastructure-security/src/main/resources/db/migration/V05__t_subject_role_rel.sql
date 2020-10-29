@@ -3,7 +3,7 @@ create table IF NOT EXISTS security_db.t_subject_role_rel
     subject_id  int UNSIGNED     NOT NULL COMMENT '用户id',
     role_id     int UNSIGNED     NOT NULL COMMENT '用户id',
     version     INT UNSIGNED     NOT NULL DEFAULT 0 COMMENT '乐观锁版本',
-    status      varchar(12)             NOT NULL default 'INVALID' COMMENT '状态',
+    status      varchar(12)             NOT NULL default 'VALID' COMMENT '状态',
     create_by   VARCHAR(64)      NOT NULL default 'SYSTEM' COMMENT '创建人',
     create_time DATETIME         NOT NULL default now() COMMENT '创建时间',
     update_by   VARCHAR(64)      NOT NULL default 'SYSTEM' COMMENT '修改人',

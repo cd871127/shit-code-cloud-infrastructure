@@ -20,7 +20,6 @@ public class SubjectController {
 
     @PostMapping("")
     SubjectEntity save(@RequestBody SubjectEntity subjectEntity) {
-        subjectEntity.setStatus(BaseEntity.Status.VALID);
         return subjectService.save(subjectEntity);
     }
 
@@ -34,9 +33,8 @@ public class SubjectController {
         return subjectService.selectOneById(subjectId);
     }
 
-    @PutMapping("{subjectId}")
-    SubjectEntity update(@PathVariable("subjectId") Integer subjectId, @RequestBody SubjectEntity subjectEntity) {
-        SubjectEntity newEntity = find(subjectId);
-        return subjectEntity;
+    @PutMapping("")
+    SubjectEntity update(@RequestBody SubjectEntity subjectEntity) {
+        return subjectService.updateOneById(subjectEntity);
     }
 }
