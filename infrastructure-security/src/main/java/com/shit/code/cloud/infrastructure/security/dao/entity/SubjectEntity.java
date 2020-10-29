@@ -4,6 +4,8 @@ import com.shit.code.cloud.common.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.Set;
+
 /**
  * @author Anthony
  * @date 10/29/20
@@ -20,4 +22,5 @@ public class SubjectEntity extends BaseEntity {
 
     private String faceIdentification;
 
+    private Set<RoleEntity> roles;
 }

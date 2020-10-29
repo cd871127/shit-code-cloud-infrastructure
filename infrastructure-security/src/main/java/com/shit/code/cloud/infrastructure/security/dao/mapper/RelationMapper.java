@@ -7,5 +7,5 @@ import org.apache.ibatis.annotations.Mapper;
  * @date 10/29/20
  **/
 @Mapper
-public interface RolePermissionRelMapper {
+public interface RelationMapper {
 }

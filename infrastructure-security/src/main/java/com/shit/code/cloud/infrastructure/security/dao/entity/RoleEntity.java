@@ -4,6 +4,8 @@ import com.shit.code.cloud.common.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.Set;
+
 /**
  * @author Anthony
  * @date 10/29/20
@@ -12,6 +14,10 @@ import lombok.EqualsAndHashCode;
 @Data
 public class RoleEntity extends BaseEntity {
     private Integer roleId;
+
     private String roleName;
+
     private String roleDesc;
+
+    private Set<PermissionEntity> permissions;
 }
