@@ -2,8 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.shit.code.cloud.infrastructure.security.dao.mapper.SubjectMapper">
 
-    <insert id="insertOne" parameterType="subjectEntity">
-#         insert into security_db.t_subject()
+    <insert id="insertOne" parameterType="subjectEntity" useGeneratedKeys="true" keyProperty="subjectId"
+            keyColumn="subject_id">
+        insert into security_db.t_subject(password, fingerprint, face_identification)
+        VALUES (#{password,javaType=String}, #{fingerprint,javaType=String}, #{faceIdentification,javaType=String})
     </insert>
 
+    <update id="updateBySubjectId" parameterType="subjectEntity">
+        update security_db.t_subject
+        <trim prefix="set" suffixOverrides=",">
+            <if test="password!=null">password = #{password}</if>
+            <if test="fingerprint!=null">fingerprint = #{fingerprint}</if>
+            <if test="faceIdentification!=null">face_identification = #{faceIdentification}</if>
+        </trim>
+        where subject_id = #{subjectId}
+    </update>
+
+    <select id="selectBySubjectId" parameterType="java.lang.Integer" resultType="subjectEntity">
+        select subject_id,
+               password,
+               fingerprint,
+               face_identification,
+               version,
+               status,
+               create_by,
+               create_time,
+               update_by,
+               update_time
+        from security_db.t_subject
+        where subject_id = #{subjectId}
+    </select>
 </mapper>

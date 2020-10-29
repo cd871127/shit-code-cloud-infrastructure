@@ -23,6 +23,5 @@ shit:
         assemble: true
 
 logging:
-
   file:
     path: /tmp/log
