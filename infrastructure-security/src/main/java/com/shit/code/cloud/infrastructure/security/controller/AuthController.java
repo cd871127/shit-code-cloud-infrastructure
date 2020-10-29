@@ -1,13 +1,12 @@
 package com.shit.code.cloud.infrastructure.security.controller;
 
-import com.shit.code.cloud.infrastructure.test.expose.TestFeignClient;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.authz.annotation.RequiresRoles;
+import org.apache.shiro.mgt.SecurityManager;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.apache.shiro.mgt.SecurityManager;
+
 import javax.annotation.Resource;
 
 /**
@@ -21,7 +20,8 @@ public class AuthController {
 
     @Resource
     private SecurityManager securityManager;
-//    @Resource
+
+    //    @Resource
 //    private TestFeignClient testClient;
 //
 //    @GetMapping("auth")
@@ -36,7 +36,6 @@ public class AuthController {
 //        log.info("======哦啦啦");
 //        return new ShitCodeHttpResponse<>("ok");
 //    }
-    @RequiresRoles({"asdfasdf"})
     @GetMapping("aaa")
     String test() {
         SecurityUtils.setSecurityManager(securityManager);

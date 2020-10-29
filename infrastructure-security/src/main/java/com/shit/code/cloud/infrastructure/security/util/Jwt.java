@@ -14,7 +14,6 @@ import java.util.Map;
  * @date 2020/10/28
  */
 @Slf4j
-
 public class Jwt {
 
     public static final String TOKEN_HEADER = "Authorization";

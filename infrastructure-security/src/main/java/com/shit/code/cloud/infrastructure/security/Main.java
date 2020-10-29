@@ -13,7 +13,6 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @Slf4j
 @SpringBootApplication
 @EnableDiscoveryClient
-//@EnableAspectJAutoProxy(proxyTargetClass = true,exposeProxy = true)
 public class Main {
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);

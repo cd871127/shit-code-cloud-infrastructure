@@ -1,4 +1,4 @@
-package com.shit.code.cloud.infrastructure.security.service.authentication;
+package com.shit.code.cloud.infrastructure.security.exposure.client;
 
 import org.springframework.cloud.openfeign.FeignClient;
 
@@ -8,8 +8,7 @@ import org.springframework.cloud.openfeign.FeignClient;
  * @author anthonychen
  * @date 2020/10/28
  */
-@FeignClient(name = "infrastructure-security")
-public interface AuthenticationService {
+@FeignClient(name = "infrastructure-security",path = "/authentication")
+public interface AuthenticationClient {
 
-    String token();
 }

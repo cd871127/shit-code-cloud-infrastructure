@@ -1,7 +1,8 @@
 package com.shit.code.cloud.infrastructure.gateway.service;
 
 
-import com.shit.code.cloud.common.dto.BaseDTO;
+
+import com.shit.code.cloud.common.entity.BaseEntity;
 import com.shit.code.cloud.infrastructure.gateway.dao.dto.RouteAccessoryDTO;
 import com.shit.code.cloud.infrastructure.gateway.dao.dto.RouteDTO;
 import com.shit.code.cloud.infrastructure.gateway.dao.mapper.RouteAccessoryMapper;
@@ -89,7 +90,7 @@ public class RouteService {
      * @param id
      * @param status
      */
-    public void updateStatus(String id, BaseDTO.Status status) {
+    public void updateStatus(String id, BaseEntity.Status status) {
 
     }
 

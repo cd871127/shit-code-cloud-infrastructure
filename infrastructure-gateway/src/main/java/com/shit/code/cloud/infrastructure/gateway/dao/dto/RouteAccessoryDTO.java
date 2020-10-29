@@ -2,7 +2,7 @@ package com.shit.code.cloud.infrastructure.gateway.dao.dto;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
-import com.shit.code.cloud.common.dto.BaseDTO;
+import com.shit.code.cloud.common.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -16,7 +16,7 @@ import java.util.HashMap;
 @ToString(callSuper = true)
 @Data
 @NoArgsConstructor
-public class RouteAccessoryDTO extends BaseDTO {
+public class RouteAccessoryDTO extends BaseEntity {
     public RouteAccessoryDTO(String routeId, AccessoryType accessoryType) {
         this.routeId = routeId;
         this.type = accessoryType;

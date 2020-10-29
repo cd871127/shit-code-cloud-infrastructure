@@ -2,7 +2,7 @@ package com.shit.code.cloud.infrastructure.gateway.dao.dto;
 
 
 import com.alibaba.fastjson.JSONObject;
-import com.shit.code.cloud.common.dto.BaseDTO;
+import com.shit.code.cloud.common.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 @Data
-public class RouteDTO extends BaseDTO {
+public class RouteDTO extends BaseEntity {
     private String id;
     private String uri;
     private Integer order;
