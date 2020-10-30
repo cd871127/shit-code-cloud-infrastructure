@@ -1,17 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.shit.code.cloud.infrastructure.security.dao.mapper.RelationMapper">
-    <insert id="addRoles2Subject">
-        insert into security_db.t_subject_role_rel(subject_id, role_id) VALUE ()
+
+    <insert id="addRoles2Subject" parameterType="map">
+        insert into security_db.t_subject_role_rel(subject_id, role_id)
+        <trim prefix="VALUE" suffixOverrides=",">
+            <foreach collection="permissions" item="roleId" separator=",">
+                (#{subjectId},#{roleId})
+            </foreach>
+        </trim>
+        ON DUPLICATE KEY UPDATE status='VALID'
     </insert>
-    <insert id="addPermissions2Role">
-        insert into security_db.t_role_permission_rel(role_id, permission_id) VALUE ()
+
+    <insert id="addPermissions2Role" parameterType="map">
+        insert into security_db.t_role_permission_rel(role_id, permission_id)
+        <trim prefix="VALUE" suffixOverrides=",">
+            <foreach collection="permissions" item="permissionId" separator=",">
+                (#{roleId},#{permissionId})
+            </foreach>
+        </trim>
+        ON DUPLICATE KEY UPDATE status='VALID'
     </insert>
+
     <update id="removeRolesFromSubject">
         update security_db.t_subject_role_rel
         set status=#{status}
         where role_id = #{}
     </update>
+
     <update id="removePermissionsFromRole">
         update security_db.t_role_permission_rel
         set status=#{status}

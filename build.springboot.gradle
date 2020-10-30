@@ -66,6 +66,13 @@ processResources {
     }
 }
 
+//task copyTestResources(type: Copy, description: '编译接口jar包') {
+//    from 'build/resources/main'
+//    into 'build/resources/test'
+//}
+
+//test.dependsOn(copyTestResources)
+
 //bootBuildImage {
 //    builder = 'cd871127/container:java11.consul1.8.0'
 //    runImage = 'cd871127/container:java11.consul1.8.0'
