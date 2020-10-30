@@ -8,4 +8,13 @@ import org.apache.ibatis.annotations.Mapper;
  **/
 @Mapper
 public interface RelationMapper {
+
+    int addRoles2Subject();
+
+    int addPermissions2Role();
+
+    int removeRolesFromSubject();
+
+    int removePermissionsFromRole();
+
 }
