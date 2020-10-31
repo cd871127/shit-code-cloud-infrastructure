@@ -16,8 +16,8 @@ public interface RelationMapper {
 
     int addPermissions2Role(@Param("roleId") int roleId, @Param("permissionIds") List<Integer> permissionIds);
 
-    int removeRolesFromSubject();
-
-    int removePermissionsFromRole();
+//    int removeRolesFromSubject();
+//
+//    int removePermissionsFromRole();
 
 }

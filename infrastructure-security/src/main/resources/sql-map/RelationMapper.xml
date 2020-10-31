@@ -5,7 +5,7 @@
     <insert id="addRoles2Subject" parameterType="map">
         insert into security_db.t_subject_role_rel(subject_id, role_id)
         <trim prefix="VALUE" suffixOverrides=",">
-            <foreach collection="permissions" item="roleId" separator=",">
+            <foreach collection="roleIds" item="roleId" separator=",">
                 (#{subjectId},#{roleId})
             </foreach>
         </trim>
@@ -15,22 +15,22 @@
     <insert id="addPermissions2Role" parameterType="map">
         insert into security_db.t_role_permission_rel(role_id, permission_id)
         <trim prefix="VALUE" suffixOverrides=",">
-            <foreach collection="permissions" item="permissionId" separator=",">
+            <foreach collection="permissionIds" item="permissionId" separator=",">
                 (#{roleId},#{permissionId})
             </foreach>
         </trim>
         ON DUPLICATE KEY UPDATE status='VALID'
     </insert>
 
-    <update id="removeRolesFromSubject">
-        update security_db.t_subject_role_rel
-        set status=#{status}
-        where role_id = #{}
-    </update>
+<!--    <update id="removeRolesFromSubject">-->
+<!--        update security_db.t_subject_role_rel-->
+<!--        set status=#{status}-->
+<!--        where role_id = #{}-->
+<!--    </update>-->
 
-    <update id="removePermissionsFromRole">
-        update security_db.t_role_permission_rel
-        set status=#{status}
-        where permission_id = #{}
-    </update>
+<!--    <update id="removePermissionsFromRole">-->
+<!--        update security_db.t_role_permission_rel-->
+<!--        set status=#{status}-->
+<!--        where permission_id = #{}-->
+<!--    </update>-->
 </mapper>
