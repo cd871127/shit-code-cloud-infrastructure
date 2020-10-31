@@ -25,5 +25,4 @@ public class RoleController implements BaseCurdController<Role> {
         return roleService;
     }
 
-
 }
