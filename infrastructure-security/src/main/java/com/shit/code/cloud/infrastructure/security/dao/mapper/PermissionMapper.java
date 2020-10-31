@@ -1,7 +1,7 @@
 package com.shit.code.cloud.infrastructure.security.dao.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.shit.code.cloud.infrastructure.security.dao.entity.Permission;
+import com.shit.code.cloud.infrastructure.security.dao.domain.Permission;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

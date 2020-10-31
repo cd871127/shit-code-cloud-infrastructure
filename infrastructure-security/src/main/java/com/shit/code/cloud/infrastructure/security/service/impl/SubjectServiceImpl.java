@@ -1,7 +1,7 @@
-package com.shit.code.cloud.infrastructure.security.service;
+package com.shit.code.cloud.infrastructure.security.service.impl;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.shit.code.cloud.infrastructure.security.dao.entity.Subject;
+import com.shit.code.cloud.infrastructure.security.dao.domain.Subject;
 import com.shit.code.cloud.infrastructure.security.dao.mapper.SubjectMapper;
 import com.shit.code.cloud.mybatis.web.BaseCurdService;
 import lombok.extern.slf4j.Slf4j;

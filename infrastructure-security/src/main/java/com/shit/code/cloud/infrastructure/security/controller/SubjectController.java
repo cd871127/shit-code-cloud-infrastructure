@@ -1,7 +1,7 @@
 package com.shit.code.cloud.infrastructure.security.controller;
 
-import com.shit.code.cloud.infrastructure.security.dao.entity.Subject;
-import com.shit.code.cloud.infrastructure.security.service.SubjectServiceImpl;
+import com.shit.code.cloud.infrastructure.security.dao.domain.Subject;
+import com.shit.code.cloud.infrastructure.security.service.impl.SubjectServiceImpl;
 import com.shit.code.cloud.mybatis.web.BaseCurdController;
 import com.shit.code.cloud.mybatis.web.BaseCurdService;
 import org.springframework.web.bind.annotation.RequestMapping;

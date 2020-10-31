@@ -1,4 +1,4 @@
-package com.shit.code.cloud.infrastructure.security.dao.entity;
+package com.shit.code.cloud.infrastructure.security.dao.domain;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;

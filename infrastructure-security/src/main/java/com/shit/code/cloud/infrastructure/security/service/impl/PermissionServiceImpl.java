@@ -1,7 +1,7 @@
-package com.shit.code.cloud.infrastructure.security.service;
+package com.shit.code.cloud.infrastructure.security.service.impl;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.shit.code.cloud.infrastructure.security.dao.entity.Permission;
+import com.shit.code.cloud.infrastructure.security.dao.domain.Permission;
 import com.shit.code.cloud.infrastructure.security.dao.mapper.PermissionMapper;
 import com.shit.code.cloud.mybatis.web.BaseCurdService;
 import org.springframework.stereotype.Service;

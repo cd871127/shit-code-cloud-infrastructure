@@ -21,21 +21,6 @@ public class AuthController {
     @Resource
     private SecurityManager securityManager;
 
-    //    @Resource
-//    private TestFeignClient testClient;
-//
-//    @GetMapping("auth")
-//    public ShitCodeHttpResponse<String> ok() {
-//        return new ShitCodeHttpResponse<>("ok");
-//    }
-//
-//    @GetMapping("auth2")
-//    public ShitCodeHttpResponse<String> ok2() {
-//        testClient.redisSet("aaaa", "11111");
-//        log.info("test:{}", testClient.redisGet("aaaa"));
-//        log.info("======哦啦啦");
-//        return new ShitCodeHttpResponse<>("ok");
-//    }
     @GetMapping("aaa")
     String test() {
         SecurityUtils.setSecurityManager(securityManager);
