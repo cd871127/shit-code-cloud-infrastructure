@@ -1,0 +1,25 @@
+package com.shit.code.cloud.infrastructure.security.dao.entity;
+
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.shit.code.cloud.mybatis.entity.BaseEntity;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+import java.util.Set;
+
+/**
+ * @author Anthony
+ * @date 11/1/20
+ **/
+@EqualsAndHashCode(callSuper = true)
+@Data
+@TableName(schema = "security_db", value = "t_role")
+public class Role extends BaseEntity {
+    private String roleName;
+
+    private String roleDesc;
+
+    @TableField(exist = false)
+    private Set<Role> roles;
+}

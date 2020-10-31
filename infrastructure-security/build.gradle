@@ -14,5 +14,4 @@ dependencies {
 //    compile 'org.aspectj:aspectjweaver:1.9.6'
 // https://mvnrepository.com/artifact/org.testng/testng
     testImplementation group: 'org.testng', name: 'testng', version: '7.3.0'
-
 }

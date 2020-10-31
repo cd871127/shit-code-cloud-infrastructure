@@ -2,7 +2,7 @@ package com.shit.code.cloud.infrastructure.gateway.dao.entity;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
-import com.shit.code.cloud.common.entity.BaseEntity;
+import com.shit.code.cloud.mybatis.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;

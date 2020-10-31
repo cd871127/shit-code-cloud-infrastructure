@@ -1,41 +1,28 @@
 package com.shit.code.cloud.infrastructure.security.controller;
 
-import com.shit.code.cloud.infrastructure.security.dao.entity.PermissionEntity;
-import com.shit.code.cloud.infrastructure.security.service.impl.PermissionService;
-import org.springframework.web.bind.annotation.*;
+import com.shit.code.cloud.infrastructure.security.dao.entity.Permission;
+import com.shit.code.cloud.infrastructure.security.dao.entity.Role;
+import com.shit.code.cloud.infrastructure.security.service.PermissionServiceImpl;
+import com.shit.code.cloud.mybatis.web.BaseCurdController;
+import com.shit.code.cloud.mybatis.web.BaseCurdService;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
 /**
  * @author Anthony
- * @date 10/29/20
+ * @date 11/1/20
  **/
 @RestController
 @RequestMapping("/permission")
-public class PermissionController {
+public class PermissionController implements BaseCurdController<Permission> {
 
     @Resource
-    private PermissionService permissionService;
+    private PermissionServiceImpl permissionService;
 
-    @PostMapping("")
-    PermissionEntity save(@RequestBody PermissionEntity permissionEntity) {
-        return permissionService.save(permissionEntity);
+    @Override
+    public BaseCurdService<Permission> getService() {
+        return permissionService;
     }
-
-    @DeleteMapping("{permissionId}")
-    PermissionEntity deleteById(@PathVariable("permissionId") Integer permissionId) {
-        return permissionService.deleteById(permissionId);
-    }
-
-    @GetMapping("{permissionId}")
-    PermissionEntity findById(@PathVariable("permissionId") Integer permissionId) {
-        return permissionService.findById(permissionId);
-    }
-
-    @PutMapping("{permissionId}")
-    PermissionEntity updateById(@PathVariable("permissionId") Integer permissionId, @RequestBody PermissionEntity permissionEntity) {
-        permissionEntity.setPermissionId(permissionId);
-        return permissionService.updateById(permissionEntity);
-    }
-
 }

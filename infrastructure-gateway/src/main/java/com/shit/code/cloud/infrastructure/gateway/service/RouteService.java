@@ -1,12 +1,11 @@
 package com.shit.code.cloud.infrastructure.gateway.service;
 
 
-
-import com.shit.code.cloud.common.entity.BaseEntity;
 import com.shit.code.cloud.infrastructure.gateway.dao.entity.RouteAccessoryDTO;
 import com.shit.code.cloud.infrastructure.gateway.dao.entity.RouteDTO;
 import com.shit.code.cloud.infrastructure.gateway.dao.mapper.RouteAccessoryMapper;
 import com.shit.code.cloud.infrastructure.gateway.dao.mapper.RouteMapper;
+import com.shit.code.cloud.mybatis.entity.BaseEntity;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.stereotype.Service;
@@ -90,7 +89,7 @@ public class RouteService {
      * @param id
      * @param status
      */
-    public void updateStatus(String id, BaseEntity.Status status) {
+    public void updateStatus(String id, BaseEntity.DataStatus status) {
 
     }
 

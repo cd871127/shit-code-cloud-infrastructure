@@ -2,7 +2,7 @@ package com.shit.code.cloud.infrastructure.gateway.dao.entity;
 
 
 import com.alibaba.fastjson.JSONObject;
-import com.shit.code.cloud.common.entity.BaseEntity;
+import com.shit.code.cloud.mybatis.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
 @ToString(callSuper = true)
 @Data
 public class RouteDTO extends BaseEntity {
-    private String id;
     private String uri;
     private Integer order;
     private String metadata;
@@ -29,7 +28,7 @@ public class RouteDTO extends BaseEntity {
     public static RouteDTO fromDefinition(RouteDefinition routeDefinition) {
         RouteDTO routeDTO = new RouteDTO();
         final String id = routeDefinition.getId();
-        routeDTO.setId(routeDefinition.getId());
+//        routeDTO.setId(routeDefinition.getId());
         routeDTO.setUri(routeDefinition.getUri().toString());
         routeDTO.setOrder(routeDefinition.getOrder());
         routeDTO.setMetadata(JSONObject.toJSONString(routeDefinition.getMetadata()));
@@ -52,7 +51,7 @@ public class RouteDTO extends BaseEntity {
 
     public RouteDefinition toDefinition() {
         RouteDefinition routeDefinition = new RouteDefinition();
-        routeDefinition.setId(id);
+//        routeDefinition.setId(id);
         routeDefinition.setMetadata(JSONObject.parseObject(metadata));
         routeDefinition.setOrder(order);
         routeDefinition.setUri(URI.create(uri));

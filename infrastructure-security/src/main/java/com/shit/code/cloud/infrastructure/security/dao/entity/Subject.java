@@ -1,6 +1,8 @@
 package com.shit.code.cloud.infrastructure.security.dao.entity;
 
-import com.shit.code.cloud.common.entity.BaseEntity;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.shit.code.cloud.mybatis.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -12,15 +14,14 @@ import java.util.Set;
  **/
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class SubjectEntity extends BaseEntity {
-
-    private Integer subjectId;
-
+@TableName(schema = "security_db", value = "t_subject")
+public class Subject extends BaseEntity {
     private String password;
 
     private String fingerprint;
 
     private String faceIdentification;
 
-    private Set<RoleEntity> roles;
+    @TableField(exist = false)
+    private Set<Role> roles;
 }

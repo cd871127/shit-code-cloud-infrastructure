@@ -1,8 +1,11 @@
 package com.shit.code.cloud.infrastructure.security.controller;
 
-import com.shit.code.cloud.infrastructure.security.dao.entity.RoleEntity;
-import com.shit.code.cloud.infrastructure.security.service.impl.RoleService;
-import org.springframework.web.bind.annotation.*;
+import com.shit.code.cloud.infrastructure.security.dao.entity.Role;
+import com.shit.code.cloud.infrastructure.security.service.RoleServiceImpl;
+import com.shit.code.cloud.mybatis.web.BaseCurdController;
+import com.shit.code.cloud.mybatis.web.BaseCurdService;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
@@ -12,30 +15,15 @@ import javax.annotation.Resource;
  **/
 @RestController
 @RequestMapping("/role")
-public class RoleController {
+public class RoleController implements BaseCurdController<Role> {
 
     @Resource
-    private RoleService roleService;
+    private RoleServiceImpl roleService;
 
-    @PostMapping("")
-    RoleEntity save(@RequestBody RoleEntity roleEntity) {
-        return roleService.save(roleEntity);
+    @Override
+    public BaseCurdService<Role> getService() {
+        return roleService;
     }
 
-    @DeleteMapping("{roleId}")
-    RoleEntity deleteById(@PathVariable("roleId") Integer roleId) {
-        return roleService.deleteById(roleId);
-    }
-
-    @GetMapping("{roleId}")
-    RoleEntity findById(@PathVariable("roleId") Integer roleId) {
-        return roleService.findById(roleId);
-    }
-
-    @PutMapping("{roleId}")
-    RoleEntity updateById(@PathVariable("roleId") Integer roleId, @RequestBody RoleEntity roleEntity) {
-        roleEntity.setRoleId(roleId);
-        return roleService.updateById(roleEntity);
-    }
 
 }

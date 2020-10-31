@@ -1,8 +1,11 @@
 package com.shit.code.cloud.infrastructure.security.controller;
 
-import com.shit.code.cloud.infrastructure.security.dao.entity.SubjectEntity;
-import com.shit.code.cloud.infrastructure.security.service.impl.SubjectService;
-import org.springframework.web.bind.annotation.*;
+import com.shit.code.cloud.infrastructure.security.dao.entity.Subject;
+import com.shit.code.cloud.infrastructure.security.service.SubjectServiceImpl;
+import com.shit.code.cloud.mybatis.web.BaseCurdController;
+import com.shit.code.cloud.mybatis.web.BaseCurdService;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
@@ -10,31 +13,16 @@ import javax.annotation.Resource;
  * @author Anthony
  * @date 10/29/20
  **/
-@RestController
 @RequestMapping("/subject")
-public class SubjectController {
+@RestController
+public class SubjectController implements BaseCurdController<Subject> {
 
     @Resource
-    private SubjectService subjectService;
+    private SubjectServiceImpl subjectService;
 
-    @PostMapping("")
-    SubjectEntity save(@RequestBody SubjectEntity subjectEntity) {
-        return subjectService.save(subjectEntity);
-    }
 
-    @DeleteMapping("{subjectId}")
-    SubjectEntity deleteById(@PathVariable("subjectId") Integer subjectId) {
-        return subjectService.deleteById(subjectId);
-    }
-
-    @GetMapping("{subjectId}")
-    SubjectEntity findById(@PathVariable("subjectId") Integer subjectId) {
-        return subjectService.findById(subjectId);
-    }
-
-    @PutMapping("{subjectId}")
-    SubjectEntity updateById(@PathVariable("subjectId") Integer subjectId, @RequestBody SubjectEntity subjectEntity) {
-        subjectEntity.setSubjectId(subjectId);
-        return subjectService.updateById(subjectEntity);
+    @Override
+    public BaseCurdService<Subject> getService() {
+        return subjectService;
     }
 }

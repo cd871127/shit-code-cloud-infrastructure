@@ -22,7 +22,7 @@ import java.nio.charset.StandardCharsets;
  * @date 2020/10/15
  **/
 @Slf4j
-@Component
+//@Component
 public class AuthenticationFilter implements GlobalFilter, Ordered {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
