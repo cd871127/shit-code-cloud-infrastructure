@@ -1,7 +1,6 @@
 package com.shit.code.cloud.infrastructure.security.controller;
 
 import com.shit.code.cloud.infrastructure.security.dao.entity.Permission;
-import com.shit.code.cloud.infrastructure.security.dao.entity.Role;
 import com.shit.code.cloud.infrastructure.security.service.PermissionServiceImpl;
 import com.shit.code.cloud.mybatis.web.BaseCurdController;
 import com.shit.code.cloud.mybatis.web.BaseCurdService;
