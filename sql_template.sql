@@ -10,7 +10,6 @@ create table IF NOT EXISTS ${dn_name}_db.t_${table_name}
     primary key (create_time)
 --     foreign key (route_id) references gateway_db.t_route (id) ON DELETE CASCADE,
 --     INDEX (route_id, name),
---     UNIQUE (unique_id)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
 

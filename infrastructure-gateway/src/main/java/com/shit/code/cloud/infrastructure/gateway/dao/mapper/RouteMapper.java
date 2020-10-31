@@ -1,6 +1,6 @@
 package com.shit.code.cloud.infrastructure.gateway.dao.mapper;
 
-import com.shit.code.cloud.infrastructure.gateway.dao.dto.RouteDTO;
+import com.shit.code.cloud.infrastructure.gateway.dao.entity.RouteDTO;
 import com.shit.code.cloud.mybatis.cache.RedisCache;
 import org.apache.ibatis.annotations.CacheNamespace;
 import org.apache.ibatis.annotations.Delete;

@@ -1,8 +1,8 @@
 package com.shit.code.cloud.infrastructure.gateway.dao.mapper;
 
 import com.shit.code.cloud.infrastructure.gateway.BaseTest;
-import com.shit.code.cloud.infrastructure.gateway.dao.dto.RouteAccessoryDTO;
-import com.shit.code.cloud.infrastructure.gateway.dao.dto.RouteDTO;
+import com.shit.code.cloud.infrastructure.gateway.dao.entity.RouteAccessoryDTO;
+import com.shit.code.cloud.infrastructure.gateway.dao.entity.RouteDTO;
 import org.junit.Test;
 
 import javax.annotation.Resource;

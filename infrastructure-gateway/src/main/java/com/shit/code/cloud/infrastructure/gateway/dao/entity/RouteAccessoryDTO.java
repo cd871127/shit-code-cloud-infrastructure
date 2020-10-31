@@ -1,4 +1,4 @@
-package com.shit.code.cloud.infrastructure.gateway.dao.dto;
+package com.shit.code.cloud.infrastructure.gateway.dao.entity;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;

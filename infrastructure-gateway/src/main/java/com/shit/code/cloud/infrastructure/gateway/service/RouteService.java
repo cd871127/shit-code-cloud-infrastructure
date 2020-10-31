@@ -3,8 +3,8 @@ package com.shit.code.cloud.infrastructure.gateway.service;
 
 
 import com.shit.code.cloud.common.entity.BaseEntity;
-import com.shit.code.cloud.infrastructure.gateway.dao.dto.RouteAccessoryDTO;
-import com.shit.code.cloud.infrastructure.gateway.dao.dto.RouteDTO;
+import com.shit.code.cloud.infrastructure.gateway.dao.entity.RouteAccessoryDTO;
+import com.shit.code.cloud.infrastructure.gateway.dao.entity.RouteDTO;
 import com.shit.code.cloud.infrastructure.gateway.dao.mapper.RouteAccessoryMapper;
 import com.shit.code.cloud.infrastructure.gateway.dao.mapper.RouteMapper;
 import org.apache.commons.collections4.CollectionUtils;

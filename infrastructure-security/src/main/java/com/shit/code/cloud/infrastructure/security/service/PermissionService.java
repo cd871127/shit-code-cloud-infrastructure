@@ -18,6 +18,12 @@ public class PermissionService {
     @Resource
     private PermissionMapper permissionMapper;
 
+    /**
+     * 保存permission
+     *
+     * @param permissionEntity
+     * @return
+     */
     public PermissionEntity save(PermissionEntity permissionEntity) {
         int count = permissionMapper.insertOne(permissionEntity);
         if (count != 1) {
@@ -26,6 +32,12 @@ public class PermissionService {
         return selectOneById(permissionEntity.getPermissionId());
     }
 
+    /**
+     * 删除permission
+     *
+     * @param permissionId
+     * @return
+     */
     public PermissionEntity delete(final int permissionId) {
         PermissionEntity permissionEntity = new PermissionEntity();
         permissionEntity.setStatus(BaseEntity.Status.INVALID);

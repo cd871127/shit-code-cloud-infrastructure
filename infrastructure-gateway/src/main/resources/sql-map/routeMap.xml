@@ -24,16 +24,14 @@
     </update>
 
     <sql id="select">
-        select id, uri, `order`, metadata, unique_id, version, status, create_by, create_time, update_by,
+        select id, uri, `order`, metadata,  version, status, create_by, create_time, update_by,
         update_time, 'PREDICATE' as predicate, 'FILTER' as filter
         from gateway_db.t_route
         <where>
             <if test="id != null">
                 id = #{id}
             </if>
-            <if test="uniqueId != null">
-                and unique_id = #{uniqueId}
-            </if>
+
             <if test="version != null">
                 and version = #{version}
             </if>
