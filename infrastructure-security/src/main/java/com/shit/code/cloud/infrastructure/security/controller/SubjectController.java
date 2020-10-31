@@ -1,7 +1,7 @@
 package com.shit.code.cloud.infrastructure.security.controller;
 
 import com.shit.code.cloud.infrastructure.security.dao.entity.SubjectEntity;
-import com.shit.code.cloud.infrastructure.security.service.SubjectService;
+import com.shit.code.cloud.infrastructure.security.service.impl.SubjectService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -23,17 +23,18 @@ public class SubjectController {
     }
 
     @DeleteMapping("{subjectId}")
-    SubjectEntity delete(@PathVariable("subjectId") Integer subjectId) {
-        return subjectService.delete(subjectId);
+    SubjectEntity deleteById(@PathVariable("subjectId") Integer subjectId) {
+        return subjectService.deleteById(subjectId);
     }
 
     @GetMapping("{subjectId}")
-    SubjectEntity find(@PathVariable("subjectId") Integer subjectId) {
-        return subjectService.selectOneById(subjectId);
+    SubjectEntity findById(@PathVariable("subjectId") Integer subjectId) {
+        return subjectService.findById(subjectId);
     }
 
-    @PutMapping("")
-    SubjectEntity update(@RequestBody SubjectEntity subjectEntity) {
-        return subjectService.updateOneById(subjectEntity);
+    @PutMapping("{subjectId}")
+    SubjectEntity updateById(@PathVariable("subjectId") Integer subjectId, @RequestBody SubjectEntity subjectEntity) {
+        subjectEntity.setSubjectId(subjectId);
+        return subjectService.updateById(subjectEntity);
     }
 }

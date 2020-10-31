@@ -30,5 +30,5 @@
                update_time
         from security_db.t_permission
         where permission_id = #{permissionId}
-    </select>
+          and status <![CDATA[<>]]> 'DELETED' </select>
 </mapper>

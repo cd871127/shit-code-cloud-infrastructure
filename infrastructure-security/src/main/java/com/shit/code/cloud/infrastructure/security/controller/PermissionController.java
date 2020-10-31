@@ -1,7 +1,7 @@
 package com.shit.code.cloud.infrastructure.security.controller;
 
 import com.shit.code.cloud.infrastructure.security.dao.entity.PermissionEntity;
-import com.shit.code.cloud.infrastructure.security.service.PermissionService;
+import com.shit.code.cloud.infrastructure.security.service.impl.PermissionService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -23,18 +23,19 @@ public class PermissionController {
     }
 
     @DeleteMapping("{permissionId}")
-    PermissionEntity delete(@PathVariable("permissionId") Integer permissionId) {
-        return permissionService.delete(permissionId);
+    PermissionEntity deleteById(@PathVariable("permissionId") Integer permissionId) {
+        return permissionService.deleteById(permissionId);
     }
 
     @GetMapping("{permissionId}")
-    PermissionEntity find(@PathVariable("permissionId") Integer permissionId) {
-        return permissionService.selectOneById(permissionId);
+    PermissionEntity findById(@PathVariable("permissionId") Integer permissionId) {
+        return permissionService.findById(permissionId);
     }
 
-    @PutMapping("")
-    PermissionEntity update(@RequestBody PermissionEntity permissionEntity) {
-        return permissionService.updateOneById(permissionEntity);
+    @PutMapping("{permissionId}")
+    PermissionEntity updateById(@PathVariable("permissionId") Integer permissionId, @RequestBody PermissionEntity permissionEntity) {
+        permissionEntity.setPermissionId(permissionId);
+        return permissionService.updateById(permissionEntity);
     }
 
 }

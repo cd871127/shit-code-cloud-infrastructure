@@ -32,5 +32,6 @@
                update_time
         from security_db.t_subject
         where subject_id = #{subjectId}
+          and status <![CDATA[<>]]> 'DELETED'
     </select>
 </mapper>

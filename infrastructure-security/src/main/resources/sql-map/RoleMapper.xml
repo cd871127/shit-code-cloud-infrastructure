@@ -30,5 +30,6 @@
                update_time
         from security_db.t_role
         where role_id = #{roleId}
+          and status <![CDATA[<>]]> 'DELETED'
     </select>
 </mapper>

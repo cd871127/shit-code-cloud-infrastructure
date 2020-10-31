@@ -10,8 +10,13 @@ import lombok.EqualsAndHashCode;
  **/
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class PermissionEntity extends BaseEntity {
+public class PermissionEntity extends BaseEntity implements ShiroConceptEntity{
     private Integer permissionId;
     private String permissionName;
     private String permissionDesc;
+
+    @Override
+    public int getId() {
+        return 0;
+    }
 }

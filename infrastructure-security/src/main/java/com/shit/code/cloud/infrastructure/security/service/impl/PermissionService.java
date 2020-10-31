@@ -1,8 +1,11 @@
-package com.shit.code.cloud.infrastructure.security.service;
+package com.shit.code.cloud.infrastructure.security.service.impl;
 
 import com.shit.code.cloud.common.entity.BaseEntity;
 import com.shit.code.cloud.infrastructure.security.dao.entity.PermissionEntity;
+import com.shit.code.cloud.infrastructure.security.dao.entity.ShiroConceptEntity;
 import com.shit.code.cloud.infrastructure.security.dao.mapper.PermissionMapper;
+import com.shit.code.cloud.infrastructure.security.service.ShiroConceptService;
+import com.zaxxer.hikari.HikariConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +17,8 @@ import javax.annotation.Resource;
  **/
 @Service
 @Slf4j
-public class PermissionService {
+public class PermissionService  {
+
     @Resource
     private PermissionMapper permissionMapper;
 
@@ -29,7 +33,7 @@ public class PermissionService {
         if (count != 1) {
             log.warn("插入数据数量异常：{},{}", count, permissionEntity);
         }
-        return selectOneById(permissionEntity.getPermissionId());
+        return findById(permissionEntity.getPermissionId());
     }
 
     /**
@@ -38,22 +42,24 @@ public class PermissionService {
      * @param permissionId
      * @return
      */
-    public PermissionEntity delete(final int permissionId) {
+    public PermissionEntity deleteById(final int permissionId) {
         PermissionEntity permissionEntity = new PermissionEntity();
-        permissionEntity.setStatus(BaseEntity.Status.INVALID);
+        permissionEntity.setStatus(BaseEntity.Status.DELETED);
         permissionEntity.setPermissionId(permissionId);
-        return updateOneById(permissionEntity);
+        return updateById(permissionEntity);
     }
 
-    public PermissionEntity selectOneById(final int permissionId) {
+    public PermissionEntity findById(final int permissionId) {
         return permissionMapper.selectByPermissionId(permissionId);
     }
 
-    public PermissionEntity updateOneById(PermissionEntity permissionEntity) {
+
+
+    public PermissionEntity updateById(PermissionEntity permissionEntity) {
         int count = permissionMapper.updateByPermissionId(permissionEntity);
         if (count != 1) {
             log.warn("更新数据量异常：{},{}", count, permissionEntity.getPermissionId());
         }
-        return selectOneById(permissionEntity.getPermissionId());
+        return findById(permissionEntity.getPermissionId());
     }
 }

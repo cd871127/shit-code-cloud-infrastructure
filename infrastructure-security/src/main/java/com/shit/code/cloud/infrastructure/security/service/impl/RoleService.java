@@ -1,4 +1,4 @@
-package com.shit.code.cloud.infrastructure.security.service;
+package com.shit.code.cloud.infrastructure.security.service.impl;
 
 import com.shit.code.cloud.common.entity.BaseEntity;
 import com.shit.code.cloud.infrastructure.security.dao.entity.RoleEntity;
@@ -23,25 +23,25 @@ public class RoleService {
         if (count != 1) {
             log.warn("插入数据数量异常：{},{}", count, roleEntity);
         }
-        return selectOneById(roleEntity.getRoleId());
+        return findById(roleEntity.getRoleId());
     }
 
-    public RoleEntity delete(final int roleId) {
+    public RoleEntity deleteById(final int roleId) {
         RoleEntity roleEntity = new RoleEntity();
-        roleEntity.setStatus(BaseEntity.Status.INVALID);
+        roleEntity.setStatus(BaseEntity.Status.DELETED);
         roleEntity.setRoleId(roleId);
-        return updateOneById(roleEntity);
+        return updateById(roleEntity);
     }
 
-    public RoleEntity selectOneById(final int roleId) {
+    public RoleEntity findById(final int roleId) {
         return roleMapper.selectByRoleId(roleId);
     }
 
-    public RoleEntity updateOneById(RoleEntity roleEntity) {
+    public RoleEntity updateById(RoleEntity roleEntity) {
         int count = roleMapper.updateByRoleId(roleEntity);
         if (count != 1) {
             log.warn("更新数据量异常：{},{}", count, roleEntity.getRoleId());
         }
-        return selectOneById(roleEntity.getRoleId());
+        return findById(roleEntity.getRoleId());
     }
 }

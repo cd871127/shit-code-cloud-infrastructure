@@ -9,6 +9,7 @@ buildscript {
     }
     dependencies {
         classpath group: "com.liferay", name: "com.liferay.gradle.plugins.app.docker", version: "1.0.11"
+        classpath "gradle.plugin.com.thinkimi.gradle:mybatis-generator-plugin:2.2"
         classpath group: "com.github.docker-java", name: "docker-java", version: "3.2.5"
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
