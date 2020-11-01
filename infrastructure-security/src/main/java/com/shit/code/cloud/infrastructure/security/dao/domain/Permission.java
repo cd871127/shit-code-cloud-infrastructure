@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 @Data
 @TableName(schema = "security_db", value = "t_permission")
 public class Permission extends BaseEntity {
+
     private String permissionName;
 
     private String permissionDesc;
