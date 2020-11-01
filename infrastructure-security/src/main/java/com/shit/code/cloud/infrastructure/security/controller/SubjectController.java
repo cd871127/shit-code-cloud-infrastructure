@@ -1,5 +1,6 @@
 package com.shit.code.cloud.infrastructure.security.controller;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.shit.code.cloud.infrastructure.security.dao.domain.Subject;
 import com.shit.code.cloud.infrastructure.security.service.impl.SubjectServiceImpl;
 import com.shit.code.cloud.mybatis.web.BaseCurdController;

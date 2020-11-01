@@ -16,25 +16,3 @@ create table IF NOT EXISTS security_db.t_role_permission_rel
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4 COMMENT '角色权限关联表';
 
-
-DELIMITER //
-CREATE TRIGGER security_db.t_role_permission_rel_before_insert
-    BEFORE INSERT
-    ON security_db.t_role_permission_rel
-    FOR EACH ROW
-begin
-    if (new.create_time is null) then
-        set new.create_time = now();
-    end if;
-end
-//
-CREATE TRIGGER security_db.t_role_permission_rel_before_update
-    before UPDATE
-    ON security_db.t_role_permission_rel
-    FOR EACH ROW
-begin
-    set NEW.update_time = now(),NEW.version = OLD.version + 1;
-end
-//
-
-DELIMITER ;

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shit.code.cloud.infrastructure.security.dao.mapper.RolePermissionRelMapper">
+
+    <insert id="addRoles2Subject" parameterType="map">
+        insert into security_db.t_subject_role_rel(subject_id, role_id,data_status)
+        <trim prefix="VALUE" suffixOverrides=",">
+            <foreach collection="roleIds" item="roleId" separator=",">
+                (#{subjectId},#{roleId},'VALID')
+            </foreach>
+        </trim>
+        ON DUPLICATE KEY UPDATE data_status='VALID',version=version+1
+    </insert>
+
+    <insert id="addPermissions2Role" parameterType="map">
+        insert into security_db.t_role_permission_rel(role_id, permission_id,data_status)
+        <trim prefix="VALUE" suffixOverrides=",">
+            <foreach collection="permissionIds" item="permissionId" separator=",">
+                (#{roleId},#{permissionId},'VALID')
+            </foreach>
+        </trim>
+        ON DUPLICATE KEY UPDATE data_status='VALID',version=version+1
+    </insert>
+
+    <!--    <update id="removeRolesFromSubject">-->
+    <!--        update security_db.t_subject_role_rel-->
+    <!--        set status=#{status}-->
+    <!--        where role_id = #{}-->
+    <!--    </update>-->
+
+    <!--    <update id="removePermissionsFromRole">-->
+    <!--        update security_db.t_role_permission_rel-->
+    <!--        set status=#{status}-->
+    <!--        where permission_id = #{}-->
+    <!--    </update>-->
+</mapper>

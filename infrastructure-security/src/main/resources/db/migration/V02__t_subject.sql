@@ -19,25 +19,3 @@ create table IF NOT EXISTS security_db.t_subject
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4 COMMENT '认证主体表';
 
-
-DELIMITER //
-CREATE TRIGGER security_db.t_subject_before_insert
-    BEFORE INSERT
-    ON security_db.t_subject
-    FOR EACH ROW
-begin
-    if (new.create_time is null) then
-        set new.create_time = now();
-    end if;
-end
-//
-CREATE TRIGGER security_db.t_subject_before_update
-    before UPDATE
-    ON security_db.t_subject
-    FOR EACH ROW
-begin
-    set NEW.update_time = now(),NEW.version = OLD.version + 1;
-end
-//
-
-DELIMITER ;
