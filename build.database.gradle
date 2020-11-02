@@ -1,15 +1,14 @@
 apply plugin: "com.thinkimi.gradle.MybatisGenerator"
 dependencies {
     implementation group: 'com.baomidou', name: 'mybatis-plus-boot-starter', version: '3.4.0'
-
-    implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: mybatisVersion
     implementation group: 'mysql', name: 'mysql-connector-java', version: mysqlVersion
-    implementation group: 'com.github.pagehelper', name: 'pagehelper-spring-boot-starter', version: pageHelperVersion
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc'
     //flyway
     implementation group: 'org.flywaydb', name: 'flyway-core', version: flywayVersion
-
     implementation group: 'com.shit.code.cloud', name: 'shit-code-cloud-mybatis-spring-boot-starter', version: '0.1.2'
+
+//    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc'
+//    implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: mybatisVersion
+//    implementation group: 'com.github.pagehelper', name: 'pagehelper-spring-boot-starter', version: pageHelperVersion
 }
 configurations {
     mybatisGenerator
@@ -22,7 +21,5 @@ mybatisGenerator {
     dependencies {
         mybatisGenerator 'org.mybatis.generator:mybatis-generator-core:1.4.0'
         mybatisGenerator "mysql:mysql-connector-java:$mysqlVersion"
-        mybatisGenerator 'org.postgresql:postgresql:42.2.6'
-        mybatisGenerator  // Here add your mariadb dependencies or else
     }
 }

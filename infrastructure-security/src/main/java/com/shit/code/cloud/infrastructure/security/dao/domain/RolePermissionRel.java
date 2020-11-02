@@ -1,6 +1,5 @@
 package com.shit.code.cloud.infrastructure.security.dao.domain;
 
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.shit.code.cloud.mybatis.entity.BaseEntity;
 import lombok.Data;

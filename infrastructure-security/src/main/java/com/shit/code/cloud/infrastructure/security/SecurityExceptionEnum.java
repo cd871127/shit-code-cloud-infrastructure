@@ -1,7 +1,6 @@
 package com.shit.code.cloud.infrastructure.security;
 
 import com.shit.code.cloud.common.web.response.HttpResponse;
-import org.springframework.data.annotation.LastModifiedBy;
 
 /**
  * @author Anthony

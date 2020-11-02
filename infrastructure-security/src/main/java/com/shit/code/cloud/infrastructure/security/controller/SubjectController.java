@@ -1,10 +1,9 @@
 package com.shit.code.cloud.infrastructure.security.controller;
 
-import com.baomidou.mybatisplus.extension.service.IService;
 import com.shit.code.cloud.infrastructure.security.dao.domain.Subject;
-import com.shit.code.cloud.infrastructure.security.service.impl.SubjectServiceImpl;
-import com.shit.code.cloud.mybatis.web.BaseCurdController;
-import com.shit.code.cloud.mybatis.web.BaseCurdService;
+import com.shit.code.cloud.infrastructure.security.service.TestService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,14 +15,27 @@ import javax.annotation.Resource;
  **/
 @RequestMapping("/subject")
 @RestController
-public class SubjectController implements BaseCurdController<Subject> {
+@Slf4j
+public class SubjectController {
 
+    //    @Resource
+//    private SubjectServiceImpl subjectService;
+//
+//
+//    @Override
+//    public BaseCurdService<Subject> getService() {
+//        return subjectService;
+//    }
     @Resource
-    private SubjectServiceImpl subjectService;
+    private TestService testService;
 
-
-    @Override
-    public BaseCurdService<Subject> getService() {
-        return subjectService;
+    @GetMapping("test")
+    public String test() {
+        Subject subject = new Subject();
+        subject.setPassword("123");
+        testService.save(subject);
+        log.info("{}", subject);
+        return "123";
     }
+
 }
