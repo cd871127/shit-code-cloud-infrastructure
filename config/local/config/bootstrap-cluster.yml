@@ -23,5 +23,6 @@ shit:
         assemble: true
 
 logging:
+  config: classpath:config/logback-spring.xml
   file:
     path: /tmp/log
