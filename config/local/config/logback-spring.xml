@@ -2,6 +2,6 @@
 
 <configuration scan="true" scanPeriod="10 seconds" debug="false">
 <!--    <springProperty scope="context" name="NGINX_HOST" source="shitcode.env.nginx.host"/>-->
-    <include url="http://nginx.shit-code.com/logback-spring-dev.xml"/>
-<!--    <include resource="config/logback-spring-dev2.xml"/>-->
+<!--    <include url="http://nginx.shit-code.com/logback-spring-dev.xml"/>-->
+    <include resource="config/logback-spring-dev2.xml"/>
 </configuration>

@@ -11,5 +11,5 @@ dependencies {
     implementation group: 'io.jsonwebtoken', name: 'jjwt', version: jjwtVersion
     implementation "javax.xml.bind:jaxb-api:$jaxbApi"
     implementation group: 'org.apache.shiro', name: 'shiro-spring-boot-starter', version: shiroVersion
-//    compile 'org.aspectj:aspectjweaver:1.9.6'
+
 }

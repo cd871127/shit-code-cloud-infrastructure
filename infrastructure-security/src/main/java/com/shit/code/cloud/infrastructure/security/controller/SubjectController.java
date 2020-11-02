@@ -2,10 +2,13 @@ package com.shit.code.cloud.infrastructure.security.controller;
 
 import com.shit.code.cloud.infrastructure.security.dao.domain.Subject;
 import com.shit.code.cloud.infrastructure.security.service.TestService;
+import com.shit.code.cloud.log.LogLevel;
+import com.shit.code.cloud.log.annotation.AroundLog;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +21,7 @@ import javax.annotation.Resource;
 @RequestMapping("/subject")
 @RestController
 @Slf4j
-@Tag(name="测试类tagname",description = "测试类tagdesc")
+@Tag(name = "测试类tagname", description = "测试类tagdesc")
 public class SubjectController {
 
     //    @Resource
@@ -32,14 +35,15 @@ public class SubjectController {
     @Resource
     private TestService testService;
 
-    @GetMapping("test")
-    @Operation(method = "GET",description = "测试oper")
-    public String test() {
+    @GetMapping("test/{password}")
+    @Operation(method = "GET", description = "测试oper")
+    @AroundLog(level = LogLevel.INFO)
+    public Subject test(@PathVariable("password") String password) {
         Subject subject = new Subject();
         subject.setPassword("123");
         testService.save(subject);
         log.info("{}", subject);
-        return "123";
+        return subject;
     }
 
 }
