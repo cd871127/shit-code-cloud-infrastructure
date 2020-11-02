@@ -35,6 +35,10 @@ dependencies {
 
     // https://mvnrepository.com/artifact/com.github.ben-manes.caffeine/caffeine
     implementation group: 'com.github.ben-manes.caffeine', name: 'caffeine', version: caffeineVersion
+    // https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter
+
+    implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: springDocVersion
+
 }
 
 bootJar {
