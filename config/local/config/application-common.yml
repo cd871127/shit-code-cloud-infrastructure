@@ -1,14 +1,6 @@
 spring:
   main:
     allow-bean-definition-overriding: true
-  zipkin:
-    sender:
-      type: rabbit
-  sleuth:
-    sampler:
-      probability: 1.0
-    trace-id128: true
-
 
 management:
   endpoint:
