@@ -25,3 +25,4 @@ server:
       dir: ${logging.file.path}/undertow
       pattern: combined
 #    buffer-size:
+

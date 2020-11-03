@@ -43,6 +43,10 @@ dependencies {
 
     implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: springDocVersion
     implementation "org.aspectj:aspectjweaver:$aspectJVersion"
+
+    // https://mvnrepository.com/artifact/com.github.ulisesbocchio/jasypt-spring-boot-starter
+    implementation group: 'com.github.ulisesbocchio', name: 'jasypt-spring-boot-starter', version: jasyptVersion
+
 }
 
 bootJar {
@@ -56,6 +60,8 @@ bootJar {
 bootRun {
     setMain("com.shit.code.cloud.infrastructure.${project.name.replace("infrastructure-", "")}.Main")
     systemProperties.put("spring.profiles.active", "dev")
+    systemProperties.put("jasypt.encryptor.password", "123456")
+    systemProperties.put("jasypt.encryptor.algorithm", "PBEWITHHMACSHA512ANDAES_256")
 //    systemProperties.put("spring.profiles.active", "dev")
     List<String> jvmArgList = new ArrayList<>()
 
