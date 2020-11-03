@@ -7,8 +7,6 @@ spring:
     username: guest
     password: guest
     addresses: 172.28.0.41
-  zipkin:
-    base-url: 172.28.0.51:8080
   #  security:
 #    user:
 #      name: admin
