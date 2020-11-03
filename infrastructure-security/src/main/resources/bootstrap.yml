@@ -2,7 +2,7 @@ spring:
   application:
     name: infrastructure-security
   profiles:
-    include: consul,database,admin,common,redis
+    include: consul,database,admin,common,redis,zipkin,rabbitmq
 
 server:
   port: 8080

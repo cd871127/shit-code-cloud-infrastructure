@@ -2,25 +2,9 @@ spring:
   boot:
     admin:
       client:
-        url: ${spring.boot.admin.client.url}
+        url: ${shit.spring.boot.admin.client.url}
         auto-deregistration: true
         instance:
           prefer-ip: true
           service-base-url: http://${spring.cloud.client.ip-address}:${server.port}
           management-base-url: http://${spring.cloud.client.ip-address}:${server.port}
----
-spring:
-  profiles: dev
-  boot:
-    admin:
-      client:
-        url: http://172.28.0.101:8080
----
-spring:
-  profiles: cluster
-  boot:
-    admin:
-      client:
-        url:
-          - http://admin-1.shit-code.com:8080
-          - http://admin-2.shit-code.com:8080
