@@ -1,3 +1,7 @@
-#shiro:
-#  annotations:
-#    enabled: false
+test: ${test}
+
+---
+spring:
+  profiles: dev
+test:
+  test: 111

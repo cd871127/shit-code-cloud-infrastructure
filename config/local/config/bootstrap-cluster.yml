@@ -21,6 +21,16 @@ shit:
       sql:
         #打印完整sql日志
         assemble: true
+    log:
+      around:
+        method:
+          enable: true
+          level: INFO
+        annotation:
+          enable: true
+        request-mapping:
+          enable: true
+          level: INFO
 
 logging:
   config: classpath:config/logback-spring.xml

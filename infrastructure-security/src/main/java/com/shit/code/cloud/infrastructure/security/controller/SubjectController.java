@@ -7,6 +7,7 @@ import com.shit.code.cloud.log.annotation.AroundLog;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,8 @@ import javax.annotation.Resource;
 @Tag(name = "测试类tagname", description = "测试类tagdesc")
 public class SubjectController {
 
+    @Value("${test.test:999}")
+    private Integer olal;
     //    @Resource
 //    private SubjectServiceImpl subjectService;
 //
@@ -38,12 +41,12 @@ public class SubjectController {
     @GetMapping("test/{password}")
     @Operation(method = "GET", description = "测试oper")
     @AroundLog(level = LogLevel.INFO)
-    public Subject test(@PathVariable("password") String password) {
+    public Integer test(@PathVariable("password") String password) {
         Subject subject = new Subject();
         subject.setPassword("123");
         testService.save(subject);
         log.info("{}", subject);
-        return subject;
+        return olal;
     }
 
 }
