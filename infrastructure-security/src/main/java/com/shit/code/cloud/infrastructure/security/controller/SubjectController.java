@@ -25,7 +25,7 @@ import javax.annotation.Resource;
 @Tag(name = "测试类tagname", description = "测试类tagdesc")
 public class SubjectController {
 
-    @Value("${test.test:999}")
+    @Value("${test:999}")
     private Integer olal;
     //    @Resource
 //    private SubjectServiceImpl subjectService;

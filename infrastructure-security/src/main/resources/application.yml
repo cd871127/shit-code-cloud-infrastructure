@@ -1,7 +1,0 @@
-test: ${test}
-
----
-spring:
-  profiles: dev
-test:
-  test: 111
