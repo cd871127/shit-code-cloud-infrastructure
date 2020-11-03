@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
+ * https://codecentric.github.io/spring-boot-admin/current/#_sba_client
  * @author Anthony Chen
  * @date 2020/7/3
  **/
