@@ -1,17 +1,14 @@
-shit:
-  spring:
-    boot:
-      admin:
-        client:
-          url:
-            - http://admin-1.shit-code.com:8080
-            - http://admin-2.shit-code.com:8080
-    datasource:
-      url: jdbc:mysql://mysql-master.shit-code.com:3306/?useUnicode=true&characterEncoding=utf-8&useSSL=false
-      username: root
-      password: 123456
-
 spring:
+  datasource:
+    url: jdbc:mysql://mysql-master.shit-code.com:3306/?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+  boot:
+    admin:
+      client:
+        url:
+          - http://admin-1.shit-code.com:8080
+          - http://admin-2.shit-code.com:8080
   redis:
     cluster:
       nodes:

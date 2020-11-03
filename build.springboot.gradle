@@ -59,18 +59,12 @@ bootJar {
 
 bootRun {
     setMain("com.shit.code.cloud.infrastructure.${project.name.replace("infrastructure-", "")}.Main")
-    systemProperties.put("spring.profiles.active", "dev")
+//    systemProperties.put("spring.profiles.active", "dev")
+    systemProperties.put("spring.profiles.active", "stg")
     systemProperties.put("jasypt.encryptor.password", "123456")
     systemProperties.put("jasypt.encryptor.algorithm", "PBEWITHHMACSHA512ANDAES_256")
 //    systemProperties.put("spring.profiles.active", "dev")
     List<String> jvmArgList = new ArrayList<>()
-
-//    jvmArgList.add("-client")
-//    jvmArgList.add("-XX:+UnlockDiagnosticVMOptions")
-//    jvmArgList.add("-XX:+PrintAssembly")
-//    jvmArgList.add("-XX:+PrintCompilation")
-//
-//    jvmArgList.add("-XX:CompileCommand='print,com.shit.code.infrastructure.gateway.test.TestController.test'")
     setJvmArgs(jvmArgList)
 }
 
@@ -79,33 +73,3 @@ processResources {
         include '**'
     }
 }
-
-//task copyTestResources(type: Copy, description: '编译接口jar包') {
-//    from 'build/resources/main'
-//    into 'build/resources/test'
-//}
-//
-//test.dependsOn(copyTestResources)
-
-//bootBuildImage {
-//    builder = 'cd871127/container:java11.consul1.8.0'
-//    runImage = 'cd871127/container:java11.consul1.8.0'
-//    imageName = "cd871127/${project.name}:${project.version}"
-//
-//    cleanCache = false
-//    verboseLogging = true
-//
-//    environment = [
-//            "DOCKER_HOST": "tcp://localhost:2376"
-////            "HTTP_PROXY" : "http://127.0.0.1:10088",
-////            "HTTPS_PROXY": "http://127.0.0.1:10088"
-//    ]
-//}
-
-//uploadBootArchives {
-//    repositories {
-//        mavenDeployer {
-//            repository url: 'https://repo.example.com'
-//        }
-//    }
-//}

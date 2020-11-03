@@ -2,7 +2,6 @@ spring:
   boot:
     admin:
       client:
-        url: ${shit.spring.boot.admin.client.url}
         auto-deregistration: true
         instance:
           prefer-ip: true

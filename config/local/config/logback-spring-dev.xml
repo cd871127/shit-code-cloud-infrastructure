@@ -48,7 +48,7 @@
     </appender>
 
     <property name="CONSOLE_LOG_PATTERN"
-              value="%d{yyyy-MM-dd HH:mm:ss.SSS,Asia/Shanghai} [%-15.15thread] [%32.32(%X{X-B3-TraceId:-})] %highlight(%-5level) %-64.64(%logger{32}) - %msg%n"/>
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS,Asia/Shanghai} [%-15.15thread] [%32.32(%X{X-B3-TraceId:-})] %highlight(%-5level) %-64.64(%logger{64}) - %msg%n"/>
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>${CONSOLE_LOG_PATTERN}</pattern>

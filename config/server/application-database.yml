@@ -12,9 +12,6 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: ${shit.spring.datasource.url}
-    username: ${shit.spring.datasource.username}
-    password: ${shit.spring.datasource.password}
     # Hikari 连接池配置
     hikari:
       # 最小空闲连接数量
