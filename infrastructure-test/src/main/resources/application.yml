@@ -1,7 +1,11 @@
-test:
-  test: ${test.test}
----
-spring:
-  profiles: dev
-test:
-  test: 111
+server:
+  undertow:
+    threads:
+      io: 16
+      worker: 256
+    direct-buffers: true
+    accesslog:
+      enabled: true
+      rotate: true
+      dir: ${logging.file.path}/undertow
+      pattern: combined

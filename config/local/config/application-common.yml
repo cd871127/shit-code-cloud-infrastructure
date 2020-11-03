@@ -12,3 +12,16 @@ management:
     web:
       exposure:
         include: '*'
+
+server:
+  undertow:
+    threads:
+      io: 16
+      worker: 256
+    direct-buffers: true
+    accesslog:
+      enabled: true
+      rotate: true
+      dir: ${logging.file.path}/undertow
+      pattern: combined
+#    buffer-size:
