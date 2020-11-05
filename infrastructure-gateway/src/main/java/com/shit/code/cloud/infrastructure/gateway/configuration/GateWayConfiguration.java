@@ -13,9 +13,9 @@ import org.springframework.http.codec.ServerCodecConfigurer;
 @Configuration
 public class GateWayConfiguration {
 
-    @Bean
-    public ServerCodecConfigurer serverCodecConfigurer() {
-        return ServerCodecConfigurer.create();
-    }
+//    @Bean
+//    public ServerCodecConfigurer serverCodecConfigurer() {
+//        return ServerCodecConfigurer.create();
+//    }
 
 }

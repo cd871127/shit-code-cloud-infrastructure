@@ -6,3 +6,8 @@ spring:
           enabled: true
           lower-case-service-id: true
 
+      routes:
+        - id: host_route
+          uri: http://www.youdao.com
+          predicates:
+            - Path=/foo/**,/bar/{segment}

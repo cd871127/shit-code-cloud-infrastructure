@@ -2,6 +2,8 @@ package com.shit.code.cloud.infrastructure.gateway.dao.entity;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.shit.code.cloud.mybatis.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,17 +16,23 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.shit.code.cloud.infrastructure.gateway.dao.DAOConfig.GATEWAY_DB;
+
 
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 @Data
+@TableName(schema = GATEWAY_DB, value = "t_route")
 public class RouteDTO extends BaseEntity {
 
     private String routeId;
     private String uri;
+    @TableField("`order`")
     private Integer order;
     private String metadata;
+    @TableField(exist = false)
     private List<RouteAccessoryDTO> filters;
+    @TableField(exist = false)
     private List<RouteAccessoryDTO> predicates;
 
     public static RouteDTO fromDefinition(RouteDefinition routeDefinition) {

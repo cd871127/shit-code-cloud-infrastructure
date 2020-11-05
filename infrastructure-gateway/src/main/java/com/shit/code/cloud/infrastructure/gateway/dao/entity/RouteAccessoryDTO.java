@@ -2,6 +2,7 @@ package com.shit.code.cloud.infrastructure.gateway.dao.entity;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.shit.code.cloud.mybatis.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,10 +13,13 @@ import org.springframework.cloud.gateway.handler.predicate.PredicateDefinition;
 
 import java.util.HashMap;
 
+import static com.shit.code.cloud.infrastructure.gateway.dao.DAOConfig.GATEWAY_DB;
+
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 @Data
 @NoArgsConstructor
+@TableName(schema = GATEWAY_DB, value = "t_route_accessory")
 public class RouteAccessoryDTO extends BaseEntity {
     public RouteAccessoryDTO(String routeId, AccessoryType accessoryType) {
         this.routeId = routeId;

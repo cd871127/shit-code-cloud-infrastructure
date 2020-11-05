@@ -1,6 +1,7 @@
 package com.shit.code.cloud.infrastructure.gateway.service;
 
 
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.shit.code.cloud.infrastructure.gateway.dao.RouteAccessoryDAO;
 import com.shit.code.cloud.infrastructure.gateway.dao.RouteDAO;
 import com.shit.code.cloud.infrastructure.gateway.dao.entity.RouteAccessoryDTO;
@@ -41,8 +42,7 @@ public class RouteService {
         return routeDAO.list().stream().peek(
                 routeDTO -> {
                     List<RouteAccessoryDTO> accessories = routeAccessoryDAO
-                            .list(routeAccessoryDAO.lambdaQuery()
-                                    .eq(RouteAccessoryDTO::getRouteId, routeDTO.getRouteId()));
+                            .list(Wrappers.lambdaQuery(RouteAccessoryDTO.class).eq(RouteAccessoryDTO::getRouteId, routeDTO.getRouteId()));
                     Map<RouteAccessoryDTO.AccessoryType, List<RouteAccessoryDTO>> accessoriesMap = accessories
                             .stream().collect(Collectors.groupingBy(RouteAccessoryDTO::getType));
                     if (accessoriesMap.containsKey(PREDICATE)) {
@@ -98,9 +98,8 @@ public class RouteService {
      */
     @Transactional(rollbackFor = Exception.class)
     public boolean delete(String routeId) {
-//        routeAccessoryMapper.deleteByRouteId(routeId);
-//        int count = routeMapper.deleteById(routeId);
-//        return count > 0;
+        routeAccessoryDAO.remove(Wrappers.lambdaQuery(RouteAccessoryDTO.class).eq(RouteAccessoryDTO::getRouteId, routeId));
+        routeDAO.remove(Wrappers.lambdaQuery(RouteDTO.class).eq(RouteDTO::getRouteId, routeId));
         return true;
     }
 
