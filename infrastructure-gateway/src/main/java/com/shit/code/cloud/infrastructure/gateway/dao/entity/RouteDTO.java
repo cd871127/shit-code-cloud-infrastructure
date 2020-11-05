@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 @ToString(callSuper = true)
 @Data
 public class RouteDTO extends BaseEntity {
+    private String routeId;
     private String uri;
     private Integer order;
     private String metadata;
@@ -27,21 +28,21 @@ public class RouteDTO extends BaseEntity {
 
     public static RouteDTO fromDefinition(RouteDefinition routeDefinition) {
         RouteDTO routeDTO = new RouteDTO();
-        final String id = routeDefinition.getId();
-//        routeDTO.setId(routeDefinition.getId());
+        final String routeId = routeDefinition.getId();
+        routeDTO.setRouteId(routeId);
         routeDTO.setUri(routeDefinition.getUri().toString());
         routeDTO.setOrder(routeDefinition.getOrder());
         routeDTO.setMetadata(JSONObject.toJSONString(routeDefinition.getMetadata()));
         if (CollectionUtils.isNotEmpty(routeDefinition.getFilters())) {
             routeDTO.setFilters(routeDefinition.getFilters().parallelStream().map(
-                    filterDefinition -> RouteAccessoryDTO.fromDefinition(id, filterDefinition))
+                    filterDefinition -> RouteAccessoryDTO.fromDefinition(routeId, filterDefinition))
                     .collect(Collectors.toList()));
         } else {
             routeDTO.setFilters(Collections.emptyList());
         }
         if (CollectionUtils.isNotEmpty(routeDefinition.getPredicates())) {
             routeDTO.setPredicates(routeDefinition.getPredicates().parallelStream().map(
-                    predicateDefinition -> RouteAccessoryDTO.fromDefinition(id, predicateDefinition))
+                    predicateDefinition -> RouteAccessoryDTO.fromDefinition(routeId, predicateDefinition))
                     .collect(Collectors.toList()));
         } else {
             routeDTO.setPredicates(Collections.emptyList());
@@ -51,7 +52,7 @@ public class RouteDTO extends BaseEntity {
 
     public RouteDefinition toDefinition() {
         RouteDefinition routeDefinition = new RouteDefinition();
-//        routeDefinition.setId(id);
+        routeDefinition.setId(routeId);
         routeDefinition.setMetadata(JSONObject.parseObject(metadata));
         routeDefinition.setOrder(order);
         routeDefinition.setUri(URI.create(uri));

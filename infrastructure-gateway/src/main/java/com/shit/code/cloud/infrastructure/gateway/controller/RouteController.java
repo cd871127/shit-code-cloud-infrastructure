@@ -5,7 +5,6 @@ import brave.Tracer;
 import brave.propagation.CurrentTraceContext;
 import brave.propagation.TraceContext;
 
-import com.shit.code.cloud.common.web.response.ShitCodeHttpResponse;
 import com.shit.code.cloud.infrastructure.gateway.entity.AccessoryEntity;
 import com.shit.code.cloud.infrastructure.gateway.service.RouteService;
 import com.shit.code.cloud.infrastructure.gateway.thread.ForkJoinPoolWrapper;
@@ -56,11 +55,11 @@ public class RouteController {
      * @return
      */
     @GetMapping("filters")
-    public ShitCodeHttpResponse<List<AccessoryEntity>> filters() {
+    public List<AccessoryEntity> filters() {
         List<AccessoryEntity> list = gatewayFilters.parallelStream()
                 .map(this::extractAccessoryInfo)
                 .collect(Collectors.toList());
-        return new ShitCodeHttpResponse<>(list);
+        return list;
     }
 
     /**
@@ -69,7 +68,7 @@ public class RouteController {
      * @return
      */
     @GetMapping("predicates")
-    public ShitCodeHttpResponse<List<AccessoryEntity>> predicates() throws ExecutionException, InterruptedException, TimeoutException {
+    public List<AccessoryEntity> predicates() throws ExecutionException, InterruptedException, TimeoutException {
 //        CurrentTraceContext.wrap()
 //
 //        log.info("tracer:{}", tracer.currentSpan().context().traceIdString());
@@ -115,7 +114,7 @@ public class RouteController {
 //                .map(this::extractAccessoryInfo)
 //                .peek(accessoryEntity -> log.info("{}", accessoryEntity))
 //                .collect(Collectors.toList());
-        return new ShitCodeHttpResponse<>(list);
+        return list;
     }
 
     /**

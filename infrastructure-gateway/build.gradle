@@ -9,4 +9,7 @@ dependencies {
 }
 configurations {
     all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-web'
+    //springdoc 引用了spring-webmvc会导致下面的warn日志
+    //Spring MVC found on classpath, which is incompatible with Spring Cloud Gateway at this time. Please remove spring-boot-starter-web dependency.
+    //all*.exclude group: 'org.springframework', module: 'spring-webmvc'
 }
