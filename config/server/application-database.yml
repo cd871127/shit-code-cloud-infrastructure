@@ -1,6 +1,6 @@
 mybatis-plus:
   mapper-locations: classpath:sql-map/*.xml
-  config-location: classpath:mybatis-config.xml
+  config-location: classpath:config/mybatis-config.xml
   global-config:
     banner: false
 

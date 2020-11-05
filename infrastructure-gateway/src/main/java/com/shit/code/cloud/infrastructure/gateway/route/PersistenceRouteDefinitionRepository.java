@@ -17,7 +17,7 @@ import javax.annotation.Resource;
  * @date 2020/7/6
  **/
 @Slf4j
-//@Component
+@Component
 public class PersistenceRouteDefinitionRepository implements RouteDefinitionRepository {
 
     @Resource
