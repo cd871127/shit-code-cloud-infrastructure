@@ -8,9 +8,9 @@ spring:
     password: guest
     addresses: rabbit.shit-code.com
   #  security:
-#    user:
-#      name: admin
-#      password: admin1
+  #    user:
+  #      name: admin
+  #      password: admin1
   output:
     ansi:
       enabled: always

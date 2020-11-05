@@ -11,7 +11,7 @@
     <contextName>shit-code.${APP_NAME}</contextName>
 
     <conversionRule conversionWord="ipAddr" converterClass="com.shit.code.cloud.log.IpAddressConverter"/>
-<!--    <conversionRule conversionWord="threadId" converterClass="com.shit.code.cloud.log.ThreadIdConverter"/>-->
+    <!--    <conversionRule conversionWord="threadId" converterClass="com.shit.code.cloud.log.ThreadIdConverter"/>-->
     <appender name="RABBIT_APPENDER" class="org.springframework.amqp.rabbit.logback.AmqpAppender">
         <layout>
             <pattern>

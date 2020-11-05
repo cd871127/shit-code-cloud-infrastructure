@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <configuration scan="true" scanPeriod="10 seconds" debug="false">
+    <logger name="org.springframework.boot.actuate.endpoint.EndpointId" level="OFF"/>
     <springProfile name="dev">
         <include resource="config/logback-spring-dev.xml"/>
     </springProfile>

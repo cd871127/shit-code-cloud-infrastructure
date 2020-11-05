@@ -1,7 +1,7 @@
 spring:
-#  redis:
-#    host: redis-1.shit-code.com
-#    port: 6379
+  #  redis:
+  #    host: redis-1.shit-code.com
+  #    port: 6379
   redis:
     cluster:
       nodes:
