@@ -1,10 +1,10 @@
 package com.shit.code.cloud.infrastructure.gateway.service;
 
 
+import com.shit.code.cloud.infrastructure.gateway.dao.RouteAccessoryDAO;
+import com.shit.code.cloud.infrastructure.gateway.dao.RouteDAO;
 import com.shit.code.cloud.infrastructure.gateway.dao.entity.RouteAccessoryDTO;
 import com.shit.code.cloud.infrastructure.gateway.dao.entity.RouteDTO;
-import com.shit.code.cloud.infrastructure.gateway.dao.mapper.RouteAccessoryMapper;
-import com.shit.code.cloud.infrastructure.gateway.dao.mapper.RouteMapper;
 import com.shit.code.cloud.mybatis.entity.BaseEntity;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.cloud.gateway.route.RouteDefinition;
@@ -14,7 +14,11 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
+
+import static com.shit.code.cloud.infrastructure.gateway.dao.entity.RouteAccessoryDTO.AccessoryType.FILTER;
+import static com.shit.code.cloud.infrastructure.gateway.dao.entity.RouteAccessoryDTO.AccessoryType.PREDICATE;
 
 /**
  * @author Anthony
@@ -23,10 +27,10 @@ import java.util.stream.Collectors;
 @Service
 public class RouteService {
     @Resource
-    private RouteMapper routeMapper;
+    private RouteDAO routeDAO;
 
     @Resource
-    private RouteAccessoryMapper routeAccessoryMapper;
+    private RouteAccessoryDAO routeAccessoryDAO;
 
     /**
      * 查询所有路由
@@ -34,8 +38,21 @@ public class RouteService {
      * @return
      */
     public List<RouteDefinition> allRoutes() {
-        return routeMapper.selectList(null).stream()
-                .map(RouteDTO::toDefinition).collect(Collectors.toList());
+        return routeDAO.list().stream().peek(
+                routeDTO -> {
+                    List<RouteAccessoryDTO> accessories = routeAccessoryDAO
+                            .list(routeAccessoryDAO.lambdaQuery()
+                                    .eq(RouteAccessoryDTO::getRouteId, routeDTO.getRouteId()));
+                    Map<RouteAccessoryDTO.AccessoryType, List<RouteAccessoryDTO>> accessoriesMap = accessories
+                            .stream().collect(Collectors.groupingBy(RouteAccessoryDTO::getType));
+                    if (accessoriesMap.containsKey(PREDICATE)) {
+                        routeDTO.setPredicates(accessoriesMap.get(PREDICATE));
+                    }
+                    if (accessoriesMap.containsKey(FILTER)) {
+                        routeDTO.setFilters(accessoriesMap.get(FILTER));
+                    }
+                }
+        ).map(RouteDTO::toDefinition).collect(Collectors.toList());
     }
 
     /**
@@ -46,15 +63,15 @@ public class RouteService {
     @Transactional(rollbackFor = Exception.class)
     public void add(RouteDefinition routeDefinition) {
         RouteDTO routeDTO = RouteDTO.fromDefinition(routeDefinition);
-        //插入routeDefinition
-        routeMapper.insert(routeDTO);
+        //插入routeDefinition,如果routeid有重复, 这里就会异常
+        routeDAO.save(routeDTO);
         List<RouteAccessoryDTO> accessories = new ArrayList<>(
                 routeDTO.getFilters().size() + routeDTO.getPredicates().size());
         accessories.addAll(routeDTO.getFilters());
         accessories.addAll(routeDTO.getPredicates());
         //插入filter和predicates
         if (CollectionUtils.isNotEmpty(accessories)) {
-            routeAccessoryMapper.insertList(accessories);
+            routeAccessoryDAO.saveBatch(accessories);
         }
     }
 
@@ -66,9 +83,12 @@ public class RouteService {
     @Transactional(rollbackFor = Exception.class)
     public void update(RouteDefinition routeDefinition) {
         RouteDTO routeDTO = RouteDTO.fromDefinition(routeDefinition);
-        routeMapper.updateById(routeDTO);
-
-
+        RouteDTO tmp = routeDAO.getOne(routeDAO.lambdaQuery().eq(RouteDTO::getRouteId, routeDTO.getRouteId()));
+        if (tmp != null) {
+            routeDTO.setRouteId(tmp.getRouteId());
+            routeDAO.updateById(routeDTO);
+        }
+        //TODO 抛出异常
     }
 
     /**
@@ -78,9 +98,10 @@ public class RouteService {
      */
     @Transactional(rollbackFor = Exception.class)
     public boolean delete(String routeId) {
-        routeAccessoryMapper.deleteByRouteId(routeId);
-        int count = routeMapper.deleteById(routeId);
-        return count > 0;
+//        routeAccessoryMapper.deleteByRouteId(routeId);
+//        int count = routeMapper.deleteById(routeId);
+//        return count > 0;
+        return true;
     }
 
     /**

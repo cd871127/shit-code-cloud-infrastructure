@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 @ToString(callSuper = true)
 @Data
 public class RouteDTO extends BaseEntity {
+
     private String routeId;
     private String uri;
     private Integer order;

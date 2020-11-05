@@ -17,13 +17,13 @@ public class RouteMapperTest extends BaseTest {
     @Test
     public void test() {
         RouteDTO routeDTO = new RouteDTO();
-        routeDTO.setId("test");
+        routeDTO.setRouteId("test");
         RouteAccessoryDTO routeAccessoryDTO = new RouteAccessoryDTO("test", RouteAccessoryDTO.AccessoryType.PREDICATE);
         routeAccessoryDTO.setType(null);
         routeAccessoryDTO.setRouteId("test");
 
-        RouteDTO routeDTO1 = routeMapper.selectOne(new RouteDTO());
-        System.out.println(routeDTO1);
+//        RouteDTO routeDTO1 = routeMapper.selectOne(new RouteDTO());
+//        System.out.println(routeDTO1);
 //            List<RouteAccessoryDTO> list = accessoryMapper.selectList(routeAccessoryDTO);
 //            Map<RouteAccessoryDTO.AccessoryType, List<RouteAccessoryDTO>> map = list.stream().collect(Collectors.groupingBy(
 //                    RouteAccessoryDTO::getType
