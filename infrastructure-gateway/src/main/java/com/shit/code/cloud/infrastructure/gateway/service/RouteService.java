@@ -8,7 +8,9 @@ import com.shit.code.cloud.infrastructure.gateway.dao.entity.RouteAccessoryDTO;
 import com.shit.code.cloud.infrastructure.gateway.dao.entity.RouteDTO;
 import com.shit.code.cloud.mybatis.entity.BaseEntity;
 import org.apache.commons.collections4.CollectionUtils;
+import org.springframework.cloud.gateway.event.RefreshRoutesEvent;
 import org.springframework.cloud.gateway.route.RouteDefinition;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

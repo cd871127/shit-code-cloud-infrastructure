@@ -2,6 +2,7 @@ package com.shit.code.cloud.infrastructure.gateway.route;
 
 import com.shit.code.cloud.infrastructure.gateway.service.RouteService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.gateway.event.RefreshRoutesEvent;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.cloud.gateway.route.RouteDefinitionRepository;
 import org.springframework.cloud.gateway.support.NotFoundException;
