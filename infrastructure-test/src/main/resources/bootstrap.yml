@@ -2,7 +2,7 @@ spring:
   application:
     name: infrastructure-test
   profiles:
-    include: consul,common,redis
+    include: consul,common,redis,zipkin
 
 server:
   port: 8082

@@ -1,46 +1,43 @@
 package com.shit.code.cloud.infrastructure.test;
 
-import com.shit.code.cloud.infrastructure.test.expose.SubjectClient;
-import com.shit.code.cloud.infrastructure.test.expose.TestFeignClient;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.io.Serializable;
 
 /**
  * @author Anthony
  * @date 10/4/20
  **/
 @RestController
+@RequestMapping("/test")
 @Slf4j
-public class TestController implements TestFeignClient {
+public class TestController {
 
     @Resource
-    private TestService testService;
+    private RedisTemplate redisTemplate;
 
-    @Resource
-    private SubjectClient subjectClient;
-
-    @GetMapping("test")
-    public Subject test() {
-        log.info("start");
-        Object o = subjectClient.findById(4);
-        log.info("end:{}", o);
-        Object o2 = subjectClient.findById2(4);
-        log.info("end2:{}", o2);
-        return (Subject) o;
+    @GetMapping("cache")
+//    @Cacheable(cacheNames = "test")
+    public Object testCache() {
+        redisTemplate.convertAndSend("test1", Test.builder().age(20).name("anthony"));
+        return 1L;
     }
 
-    @Override
-    public String redisGet(String key) {
-        return testService.redisGet(key);
-    }
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    public static class Test implements Serializable {
+        private Integer age;
 
-    @Override
-    public String redisSet(String key, String value) {
-        testService.redisSet(key, value);
-        return "ok";
+        private String name;
     }
 
 }

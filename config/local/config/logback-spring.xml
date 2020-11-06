@@ -2,6 +2,8 @@
 
 <configuration scan="true" scanPeriod="10 seconds" debug="false">
     <logger name="org.springframework.boot.actuate.endpoint.EndpointId" level="OFF"/>
+    <logger name="com.shit.code.spring.boot.cache.ShitCodeCache" level="DEBUG"/>
+
     <springProfile name="dev">
         <include resource="config/logback-spring-dev.xml"/>
     </springProfile>

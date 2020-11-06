@@ -6,3 +6,5 @@ spring:
     sampler:
       probability: 1.0
     trace-id128: true
+    baggage:
+      correlation-enabled: true

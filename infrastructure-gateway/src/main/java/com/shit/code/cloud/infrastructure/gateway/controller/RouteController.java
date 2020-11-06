@@ -1,41 +1,39 @@
 package com.shit.code.cloud.infrastructure.gateway.controller;
 
-import brave.Span;
-import brave.Tracer;
-import brave.propagation.CurrentTraceContext;
-import brave.propagation.TraceContext;
-
 import com.shit.code.cloud.infrastructure.gateway.entity.AccessoryEntity;
-import com.shit.code.cloud.infrastructure.gateway.service.RouteService;
-import com.shit.code.cloud.infrastructure.gateway.thread.ForkJoinPoolWrapper;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.MDC;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cloud.gateway.filter.factory.GatewayFilterFactory;
 import org.springframework.cloud.gateway.handler.predicate.RoutePredicateFactory;
 import org.springframework.cloud.gateway.support.Configurable;
+import org.springframework.http.MediaType;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
 
 import javax.annotation.Resource;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.time.Duration;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * @author anthony
+ */
 @Slf4j
 @RestController
 @RequestMapping("/route")
-public class RouteController {
 
-    @Resource
-    private RouteService routeService;
+public class RouteController {
 
     @Resource
     private List<GatewayFilterFactory<?>> gatewayFilters;
@@ -43,11 +41,8 @@ public class RouteController {
     @Resource
     private List<RoutePredicateFactory<?>> routePredicates;
 
-    private ConcurrentHashMap<Class<?>, Cache> classCache = new ConcurrentHashMap<>(32);
-    @Resource
-    private Tracer tracer;
-    @Resource
-    private CurrentTraceContext.Builder sleuthCurrentTraceContextBuilder;
+    private static final ConcurrentHashMap<Class<?>, Cache> CLASS_CACHE = new ConcurrentHashMap<>(32);
+
 
     /**
      * 查询可用filter列表
@@ -55,7 +50,9 @@ public class RouteController {
      * @return
      */
     @GetMapping("filters")
+    @Cacheable
     public List<AccessoryEntity> filters() {
+        log.info("======================================");
         List<AccessoryEntity> list = gatewayFilters.parallelStream()
                 .map(this::extractAccessoryInfo)
                 .collect(Collectors.toList());
@@ -68,53 +65,9 @@ public class RouteController {
      * @return
      */
     @GetMapping("predicates")
-    public List<AccessoryEntity> predicates() throws ExecutionException, InterruptedException, TimeoutException {
-//        CurrentTraceContext.wrap()
-//
-//        log.info("tracer:{}", tracer.currentSpan().context().traceIdString());
-//        log.info("MDC:{}", MDC.get("X-B3-TraceId"));
-//        TraceContext context = tracer.currentSpan().context();
-//        Map<String, String> mdcContext = MDC.getCopyOfContextMap();
-//        ExecutorService forkJoinPool =  sleuthCurrentTraceContextBuilder.build().executorService(new ForkJoinPool(6));
-//        ForkJoinTask<List<AccessoryEntity>> forkJoinTask = (ForkJoinTask<List<AccessoryEntity>>)forkJoinPool.submit(
-//                () -> routePredicates.parallelStream()
-////                () -> ThreadWrapper.wrap(routePredicates.parallelStream(), mdcContext)
-//                        .map(this::extractAccessoryInfo)
-//                        .peek(accessoryEntity -> {
-//                            log.info("tracer:{}", tracer.currentSpan().context().traceIdString());
-//                            log.info("MDC:{}", MDC.get("X-B3-TraceId"));
-//                        })
-//                        .collect(Collectors.toList()));
-//        List<AccessoryEntity> list = forkJoinTask.get(3000, TimeUnit.SECONDS);
-
-
-        log.info("tracer:{}", tracer.currentSpan().context().traceIdString());
-        log.info("MDC:{}", MDC.get("X-B3-TraceId"));
-        TraceContext context = tracer.currentSpan().context();
-        Span span = tracer.currentSpan();
-        Map<String, String> mdcContext = MDC.getCopyOfContextMap();
-        ForkJoinPool forkJoinPool = new ForkJoinPoolWrapper(3);
-        ForkJoinTask<List<AccessoryEntity>> forkJoinTask = forkJoinPool.submit(
-//                () -> ThreadWrapper.wrap(routePredicates.parallelStream(), mdcContext)
-                () -> routePredicates.parallelStream()
-//                        .peek(a -> tracer.withSpanInScope(span))
-//                        .peek(a -> tracer.withSpanInScope(span))
-                        .map(this::extractAccessoryInfo)
-                        .peek(accessoryEntity -> {
-//                            log.info("tracer:{}", tracer.currentSpan().context().traceIdString());
-                            log.info("MDC:{}", MDC.get("X-B3-TraceId"));
-                        })
-                        .collect(Collectors.toList()));
-
-
-        List<AccessoryEntity> list = forkJoinTask.get(3000, TimeUnit.SECONDS);
-
-
-//        List<AccessoryEntity> list = routePredicates.parallelStream()
-//                .map(this::extractAccessoryInfo)
-//                .peek(accessoryEntity -> log.info("{}", accessoryEntity))
-//                .collect(Collectors.toList());
-        return list;
+    public List<AccessoryEntity> predicates() {
+        return routePredicates.stream().map(this::extractAccessoryInfo)
+                .collect(Collectors.toList());
     }
 
     /**
@@ -126,8 +79,8 @@ public class RouteController {
         Configurable<?> configurable = (Configurable<?>) accessory;
         Class<?> configClass = configurable.getConfigClass();
         Cache cache;
-        if (classCache.containsKey(configClass)) {
-            cache = classCache.get(configClass);
+        if (CLASS_CACHE.containsKey(configClass)) {
+            cache = CLASS_CACHE.get(configClass);
         } else {
             String configClassName = configClass.getName();
             List<String> fields = Stream.of(configClass.getDeclaredFields())
@@ -136,7 +89,7 @@ public class RouteController {
             cache = new Cache()
                     .setConfigClassName(configClassName)
                     .setFields(fields);
-            classCache.put(configClass, cache);
+            CLASS_CACHE.put(configClass, cache);
         }
         String name = null;
         try {
@@ -156,5 +109,12 @@ public class RouteController {
     private static class Cache {
         private String configClassName;
         private List<String> fields;
+    }
+
+    @GetMapping(value = "stream", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
+    public Flux<Integer> test() {
+        AtomicInteger atomicInteger = new AtomicInteger(1);
+        return Flux.interval(Duration.ofSeconds(1)).map(l -> atomicInteger.addAndGet(1))
+                .log();
     }
 }
