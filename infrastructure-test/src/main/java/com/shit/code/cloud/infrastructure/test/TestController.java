@@ -1,7 +1,11 @@
 package com.shit.code.cloud.infrastructure.test;
 
+import brave.Tracer;
+import brave.Tracing;
+import brave.propagation.TraceContext;
 import com.shit.code.cloud.infrastructure.test.mq.Sender;
-import com.shit.code.redis.spring.message.RedisMessage;
+import com.shit.code.redis.spring.message.TraceRedisMessage;
+import com.shit.code.redis.spring.trace.Setter;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -14,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Anthony
@@ -30,9 +36,18 @@ public class TestController {
     @Resource
     private Sender sender;
 
+    @Resource
+    private Tracer tracer;
+
     @GetMapping("cache")
     public Object testCache() {
-        RedisMessage<Test> redisMessage = new RedisMessage<>(Test.builder().age(20).name("anthony").build());
+        TraceContext.Injector<Map<String, String>> injector = Tracing.current().propagation().injector(new Setter());
+        TraceRedisMessage<Test> redisMessage = new TraceRedisMessage<>();
+        redisMessage.setBody(Test.builder().age(20).name("anthony").build());
+        TraceContext traceContext = Tracing.currentTracer().currentSpan().context();
+        Map<String, String> traceContextMap = new HashMap<>();
+        injector.inject(traceContext, traceContextMap);
+//        redisMessage.setTraceContextMap(traceContextMap);
         log.info("发布：{}", redisMessage);
         redisTemplate.convertAndSend("testTopic", redisMessage);
         return 1L;
