@@ -34,8 +34,8 @@ dependencies {
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
 //    implementation group: 'org.springframework.boot', name: 'spring-boot-devtools'
 
-    implementation group: 'com.shit.code.cloud', name: 'shit-code-common', version: shitCodeLibVersion
-    implementation group: 'com.shit.code.cloud', name: 'shit-code-web-spring-boot-starter', version: shitCodeLibVersion
+    implementation group: 'com.shit.code', name: 'shit-code-common', version: shitCodeLibVersion
+    implementation group: 'com.shit.code', name: 'shit-code-web-spring-boot-starter', version: shitCodeLibVersion
     implementation group: 'com.alibaba', name: 'fastjson', version: fastJsonVersion
 
     implementation group: 'com.github.ben-manes.caffeine', name: 'caffeine', version: caffeineVersion

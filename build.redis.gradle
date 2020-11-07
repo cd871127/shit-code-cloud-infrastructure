@@ -1,4 +1,4 @@
 dependencies {
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis'
-    implementation group: 'com.shit.code.cloud', name: 'shit-code-redis-spring-boot-starter', version: shitCodeLibVersion
+    implementation group: 'com.shit.code', name: 'shit-code-redis-spring-boot-starter', version: shitCodeLibVersion
 }

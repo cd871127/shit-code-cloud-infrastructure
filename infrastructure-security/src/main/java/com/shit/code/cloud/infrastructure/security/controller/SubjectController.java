@@ -2,13 +2,12 @@ package com.shit.code.cloud.infrastructure.security.controller;
 
 import com.shit.code.cloud.infrastructure.security.dao.domain.Subject;
 import com.shit.code.cloud.infrastructure.security.service.TestService;
-
-import com.shit.code.spring.log.LogLevel;
-import com.shit.code.spring.log.annotation.AroundLog;
+import com.shit.code.log.annotation.AroundLog;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.logging.LogLevel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
