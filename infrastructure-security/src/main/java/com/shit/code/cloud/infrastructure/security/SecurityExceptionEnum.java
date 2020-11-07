@@ -1,6 +1,7 @@
 package com.shit.code.cloud.infrastructure.security;
 
-import com.shit.code.cloud.common.web.response.HttpResponse;
+
+import com.shit.code.common.web.response.HttpResponse;
 
 /**
  * @author Anthony
