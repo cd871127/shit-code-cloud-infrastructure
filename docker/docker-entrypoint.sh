@@ -8,7 +8,7 @@ else
 fi
 
 if [ ! ${PROFILE} ]; then
-  PROFILE=cluster
+  PROFILE=stg
 fi
 
 if [ "$(ls -A ${CONSUL_CONFIG_DIR_PARAM})" = "" ]; then
