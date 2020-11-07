@@ -4,7 +4,7 @@ package com.shit.code.cloud.infrastructure.gateway.dao.entity;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.shit.code.cloud.mybatis.entity.BaseEntity;
+import com.shit.code.mybatis.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;

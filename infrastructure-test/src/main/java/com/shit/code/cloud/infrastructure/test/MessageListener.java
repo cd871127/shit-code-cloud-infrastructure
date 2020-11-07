@@ -1,7 +1,6 @@
 package com.shit.code.cloud.infrastructure.test;
 
 
-import brave.Tracer;
 import com.shit.code.redis.spring.message.RedisMessage;
 import com.shit.code.redis.spring.message.RedisMessageHandler;
 import com.shit.code.redis.spring.message.RedisMessageListenerAdaptor;

@@ -2,11 +2,7 @@ package com.shit.code.cloud.infrastructure.gateway.dao.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.shit.code.cloud.infrastructure.gateway.dao.entity.RouteDTO;
-import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-
-import java.util.List;
 
 /**
  * @author anthony

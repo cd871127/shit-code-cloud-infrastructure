@@ -2,7 +2,7 @@ package com.shit.code.cloud.infrastructure.security.dao.domain;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.shit.code.cloud.mybatis.entity.BaseEntity;
+import com.shit.code.mybatis.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

@@ -13,5 +13,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 @Slf4j
 public class BaseTest {
     @Test
-    public void emptyTest(){}
+    public void emptyTest() {
+    }
 }

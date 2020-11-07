@@ -24,8 +24,8 @@ dependencies {
     implementation group: 'de.codecentric', name: 'spring-boot-admin-starter-client', version: adminVersion
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-logging'
-    implementation (group: 'org.springframework.boot', name: 'spring-boot-starter-web'){
-        exclude group: 'org.springframework.boot',module: 'spring-boot-starter-tomcat'
+    implementation(group: 'org.springframework.boot', name: 'spring-boot-starter-web') {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
     }
 
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-undertow'
@@ -34,8 +34,8 @@ dependencies {
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
 //    implementation group: 'org.springframework.boot', name: 'spring-boot-devtools'
 
-    implementation group: 'com.shit.code.cloud', name: 'shit-code-cloud-common', version: '0.1.2'
-    implementation group: 'com.shit.code.cloud', name: 'shit-code-cloud-spring-boot-web-starter', version: '0.1.1'
+    implementation group: 'com.shit.code.cloud', name: 'shit-code-common', version: shitCodeLibVersion
+    implementation group: 'com.shit.code.cloud', name: 'shit-code-web-spring-boot-starter', version: shitCodeLibVersion
     implementation group: 'com.alibaba', name: 'fastjson', version: fastJsonVersion
 
     implementation group: 'com.github.ben-manes.caffeine', name: 'caffeine', version: caffeineVersion

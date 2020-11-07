@@ -2,7 +2,7 @@ apply from: "${project.rootDir}/build.springboot.gradle"
 version '0.1.0'
 dependencies {
     implementation group: 'de.codecentric', name: 'spring-boot-admin-starter-server', version: adminVersion
-    implementation group: 'com.hazelcast',name: 'hazelcast', version: '4.0.3'
+    implementation group: 'com.hazelcast', name: 'hazelcast', version: '4.0.3'
 //    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security'
 }
 //configurations {

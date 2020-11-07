@@ -7,7 +7,6 @@ apply from: "${project.rootDir}/build.service.gradle"
 version '0.1.0'
 
 dependencies {
-    implementation group: 'com.shit.code.cloud', name: 'infrastructure-test-service', version: '0.1.0'
     implementation group: 'io.jsonwebtoken', name: 'jjwt', version: jjwtVersion
     implementation "javax.xml.bind:jaxb-api:$jaxbApi"
     implementation group: 'org.apache.shiro', name: 'shiro-spring-boot-starter', version: shiroVersion

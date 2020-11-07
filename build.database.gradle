@@ -4,7 +4,7 @@ dependencies {
     implementation group: 'mysql', name: 'mysql-connector-java', version: mysqlVersion
     //flyway
     implementation group: 'org.flywaydb', name: 'flyway-core', version: flywayVersion
-    implementation group: 'com.shit.code.cloud', name: 'shit-code-cloud-mybatis-spring-boot-starter', version: '0.1.2'
+    implementation group: 'com.shit.code.cloud', name: 'shit-code-mybatis-spring-boot-starter', version: shitCodeLibVersion
 
 //    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc'
 //    implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: mybatisVersion
