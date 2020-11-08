@@ -1,16 +1,14 @@
 package com.shit.code.cloud.infrastructure.test;
 
 import brave.Tracer;
-import brave.Tracing;
-import brave.propagation.TraceContext;
 import com.shit.code.cloud.infrastructure.test.mq.Sender;
-import com.shit.code.redis.spring.message.TraceRedisMessage;
-import com.shit.code.redis.spring.trace.Setter;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,8 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Random;
 
 /**
  * @author Anthony
@@ -40,17 +37,17 @@ public class TestController {
     private Tracer tracer;
 
     @GetMapping("cache")
+    @Cacheable(cacheNames = "test", key = "'testCache'", cacheManager = "shitCodeCacheManager")
     public Object testCache() {
-        TraceContext.Injector<Map<String, String>> injector = Tracing.current().propagation().injector(new Setter());
-        TraceRedisMessage<Test> redisMessage = new TraceRedisMessage<>();
-        redisMessage.setBody(Test.builder().age(20).name("anthony").build());
-        TraceContext traceContext = Tracing.currentTracer().currentSpan().context();
-        Map<String, String> traceContextMap = new HashMap<>();
-        injector.inject(traceContext, traceContextMap);
-//        redisMessage.setTraceContextMap(traceContextMap);
-        log.info("发布：{}", redisMessage);
-        redisTemplate.convertAndSend("testTopic", redisMessage);
-        return 1L;
+        log.error("test==");
+        return new Random(System.currentTimeMillis()).nextInt();
+    }
+
+    @GetMapping("cache/delete")
+    @CacheEvict(cacheNames = "test", key = "'testCache'", cacheManager = "shitCodeCacheManager")
+    public Object testCache1() {
+        log.error("testCache1");
+        return new Random(System.currentTimeMillis()).nextInt();
     }
 
     @GetMapping("mq")

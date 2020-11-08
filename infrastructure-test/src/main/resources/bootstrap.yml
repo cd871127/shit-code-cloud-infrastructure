@@ -5,4 +5,4 @@ spring:
     include: consul,common,redis,zipkin
 
 server:
-  port: 8082
+  port: 8081

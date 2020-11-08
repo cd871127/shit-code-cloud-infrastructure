@@ -210,7 +210,9 @@
         <appender-ref ref="ASYNC_DEBUG_FILE"/>
         <appender-ref ref="ASYNC_WARN_FILE"/>
         <appender-ref ref="ASYNC_ERROR_FILE"/>
-        <appender-ref ref="ASYNC_CONSOLE"/>
+        <appender-ref ref="CONSOLE"/>
+<!--        <appender-ref ref="ASYNC_CONSOLE"/>-->
+
     </root>
 
 </included>
