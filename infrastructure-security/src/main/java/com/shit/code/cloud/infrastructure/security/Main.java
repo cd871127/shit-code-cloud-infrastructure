@@ -14,7 +14,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @Slf4j
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableAspectJAutoProxy(proxyTargetClass = true,exposeProxy = true)
+@EnableAspectJAutoProxy(proxyTargetClass = true, exposeProxy = true)
 @EnableAsync
 public class Main {
     public static void main(String[] args) {

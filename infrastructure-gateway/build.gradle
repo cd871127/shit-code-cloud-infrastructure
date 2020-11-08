@@ -6,12 +6,15 @@ version '0.1.0'
 
 dependencies {
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-gateway'
+//    implementation group: 'org.springframework', name: 'spring-context',version: springVersion
     implementation group: 'org.springdoc', name: 'springdoc-openapi-webflux-core', version: springDocVersion
+    implementation group: 'com.shit.code', name: 'shit-code-cache-spring-boot-starter', version: shitCodeLibVersion
 }
 configurations {
     all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-web'
     all*.exclude group: 'com.shit.code', module: 'shit-code-web-spring-boot-starter'
     all*.exclude group: 'org.springdoc', module: 'springdoc-openapi-ui'
+
     //springdoc 引用了spring-webmvc会导致下面的warn日志
     //Spring MVC found on classpath, which is incompatible with Spring Cloud Gateway at this time. Please remove spring-boot-starter-web dependency.
     //all*.exclude group: 'org.springframework', module: 'spring-webmvc'

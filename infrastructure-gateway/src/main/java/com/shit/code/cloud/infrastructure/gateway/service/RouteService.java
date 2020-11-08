@@ -8,6 +8,8 @@ import com.shit.code.cloud.infrastructure.gateway.dao.entity.RouteAccessoryDTO;
 import com.shit.code.cloud.infrastructure.gateway.dao.entity.RouteDTO;
 import com.shit.code.mybatis.entity.BaseEntity;
 import org.apache.commons.collections4.CollectionUtils;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,6 +40,7 @@ public class RouteService {
      *
      * @return
      */
+    @Cacheable(key = "'route_cache_key'", cacheNames = "route_cache", cacheManager = "shitCodeCacheManager")
     public List<RouteDefinition> allRoutes() {
         return routeDAO.list().stream().peek(
                 routeDTO -> {
@@ -61,6 +64,7 @@ public class RouteService {
      * @param routeDefinition
      */
     @Transactional(rollbackFor = Exception.class)
+    @CacheEvict(key = "'route_cache_key'", cacheNames = "route_cache", cacheManager = "shitCodeCacheManager")
     public void add(RouteDefinition routeDefinition) {
         RouteDTO routeDTO = RouteDTO.fromDefinition(routeDefinition);
         //插入routeDefinition,如果routeid有重复, 这里就会异常
@@ -97,6 +101,7 @@ public class RouteService {
      * @param routeId 路由id
      */
     @Transactional(rollbackFor = Exception.class)
+    @CacheEvict(key = "'route_cache_key'", cacheNames = "route_cache", cacheManager = "shitCodeCacheManager")
     public boolean delete(String routeId) {
         routeAccessoryDAO.remove(Wrappers.lambdaQuery(RouteAccessoryDTO.class).eq(RouteAccessoryDTO::getRouteId, routeId));
         routeDAO.remove(Wrappers.lambdaQuery(RouteDTO.class).eq(RouteDTO::getRouteId, routeId));

@@ -1,7 +1,6 @@
 package com.shit.code.cloud.infrastructure.test;
 
 
-import com.shit.code.cache.spring.ServerInfo;
 import com.shit.code.redis.spring.message.RedisMessageHandler;
 import com.shit.code.redis.spring.message.RedisMessageListenerAdaptor;
 import lombok.extern.slf4j.Slf4j;

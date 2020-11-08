@@ -4,7 +4,6 @@ import com.shit.code.cloud.infrastructure.gateway.entity.AccessoryEntity;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cloud.gateway.filter.factory.GatewayFilterFactory;
 import org.springframework.cloud.gateway.handler.predicate.RoutePredicateFactory;
 import org.springframework.cloud.gateway.support.Configurable;
@@ -49,7 +48,6 @@ public class RouteController {
      * @return
      */
     @GetMapping("filters")
-    @Cacheable
     public List<AccessoryEntity> filters() {
         log.info("======================================");
         List<AccessoryEntity> list = gatewayFilters.parallelStream()

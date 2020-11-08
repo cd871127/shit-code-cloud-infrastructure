@@ -3,8 +3,8 @@ spring:
     name: infrastructure-gateway
   profiles:
     include: consul,database,admin,common,redis,zipkin,jasypt
-  cache:
-    redis:
-      time-to-live:
+#  cache:
+#    redis:
+#      time-to-live:
 server:
   port: 8081
