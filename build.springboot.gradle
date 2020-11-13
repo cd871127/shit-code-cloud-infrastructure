@@ -55,7 +55,9 @@ bootJar {
 
 
 bootRun {
-    setMain("com.shit.code.cloud.infrastructure.${project.name.replace("infrastructure-", "")}.Main")
+    if (project.name.startsWith("infrastructure-")) {
+        setMain("com.shit.code.cloud.infrastructure.${project.name.replace("infrastructure-", "")}.Main")
+    }
 //    systemProperties.put("spring.profiles.active", "dev")
     systemProperties.put("spring.profiles.active", "stg")
     systemProperties.put("jasypt.encryptor.password", "123456")
