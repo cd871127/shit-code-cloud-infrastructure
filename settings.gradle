@@ -4,3 +4,5 @@ include 'infrastructure-admin'
 include 'infrastructure-shiro'
 include 'infrastructure-security'
 include 'infrastructure-test'
+include 'foundation-data'
+

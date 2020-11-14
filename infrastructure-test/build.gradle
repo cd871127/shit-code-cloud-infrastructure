@@ -8,4 +8,6 @@ version '0.1.0'
 dependencies {
     implementation group: 'com.shit.code', name: 'shit-code-cache-spring-boot-starter', version: shitCodeLibVersion
     implementation group: 'com.shit.code', name: 'shit-code-spring-boot-starter', version: shitCodeLibVersion
+    implementation group: 'com.shit.code.cloud', name: 'foundation-data-service', version: '0.1.0'
+
 }

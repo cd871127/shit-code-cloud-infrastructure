@@ -1,6 +1,7 @@
 package com.shit.code.cloud.infrastructure.test;
 
 import brave.Tracer;
+import com.shit.code.cloud.foundation.data.dictionary.exposure.feign.DataDictionaryQueryClient;
 import com.shit.code.cloud.infrastructure.test.mq.Sender;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,11 +12,13 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Random;
 
 /**
@@ -26,6 +29,9 @@ import java.util.Random;
 @RequestMapping("/test")
 @Slf4j
 public class TestController {
+
+    @Resource
+    private DataDictionaryQueryClient dataDictionaryQueryClient;
 
     @Resource
     private RedisTemplate<String, Test> redisTemplate;
@@ -56,6 +62,31 @@ public class TestController {
         return 1L;
     }
 
+    @GetMapping("feign/{time}")
+//    @TimeLimiter(name = "backendA")
+    public Integer feign(@PathVariable(required = false) Integer time) {
+        return dataDictionaryQueryClient.test(time == null ? 0 : time);
+    }
+
+    @GetMapping("exception/{time}")
+    public Integer feign1(@PathVariable(required = false) Integer time) {
+        if (time == 5) {
+            throw new IllegalArgumentException();
+        }
+        return time;
+    }
+
+
+    @GetMapping("22")
+    public String test123() {
+        return dataDictionaryQueryClient.test2();
+    }
+
+    @GetMapping("11")
+    public BigDecimal b() {
+        return new BigDecimal("123.3");
+    }
+
     @NoArgsConstructor
     @AllArgsConstructor
     @Builder
@@ -63,7 +94,6 @@ public class TestController {
     public static class Test implements Serializable {
         private static final long serialVersionUID = 1L;
         private Integer age;
-
         private String name;
     }
 

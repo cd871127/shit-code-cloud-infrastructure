@@ -2,7 +2,46 @@ spring:
   application:
     name: infrastructure-test
   profiles:
-    include: consul,common,redis,zipkin
+    include: consul,common,redis,zipkin,admin
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+    consul:
+      discovery:
+        instance-zone: test
 
 server:
-  port: 8081
+  port: 8080
+resilience4j:
+  timelimiter:
+    configs:
+      default:
+        cancelRunningFuture: false
+        timeoutDuration: 2s
+    instances:
+      backendA:
+        baseConfig: default
+      backendB:
+        baseConfig: default
+    metrics:
+      enabled: false
+  bulkhead:
+    metrics:
+      enabled: false
+  circuitbreaker:
+    metrics:
+      enabled: false
+  ratelimiter:
+    metrics:
+      enabled: false
+  retry:
+    metrics:
+      enabled: false
+  thread-pool-bulkhead:
+    metrics:
+      enabled: false
+management:
+  metrics:
+    tags:
+      application: ${spring.application.name}

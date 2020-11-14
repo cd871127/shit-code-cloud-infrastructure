@@ -44,6 +44,8 @@ dependencies {
 
     implementation group: 'com.github.ulisesbocchio', name: 'jasypt-spring-boot-starter', version: jasyptVersion
 
+    implementation group: 'io.micrometer', name: 'micrometer-registry-prometheus', version: micrometerVersion
+
 }
 
 bootJar {

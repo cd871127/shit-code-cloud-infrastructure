@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: foundation-data
+  profiles:
+    include: consul,common,redis,zipkin,admin
+  cloud:
+    consul:
+      discovery:
+        instance-zone: test
+
+server:
+  port: ${random.int[9000,10000]}
